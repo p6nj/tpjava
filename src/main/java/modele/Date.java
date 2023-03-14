@@ -3,7 +3,7 @@ package modele;
 import java.util.Scanner;
 
 public class Date {
-  public int chJour, chMois, chAnnee;
+  protected int chJour, chMois, chAnnee;
 
   /**
    * Detailed Date constructor
@@ -162,5 +162,9 @@ public class Date {
     }
     s.close();
     return new Date(champs[0], champs[1], champs[2]);
+  }
+
+  public int getMois() {
+    return chMois;
   }
 }

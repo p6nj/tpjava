@@ -3,7 +3,7 @@ package modele;
 import java.util.Calendar;
 
 public class DateCalendrier extends Date implements ConstantesCalendrier, Comparable<Date> {
-  public int chJourSem;
+  private int chJourSem;
 
   public DateCalendrier() {
     super(0);
@@ -38,5 +38,9 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
   public DateCalendrier dateDeLaVeille() {
     Date sup = super.dateDeLaVeille();
     return new DateCalendrier(sup.chJour, sup.chMois, sup.chAnnee);
+  }
+
+  public int getJourSemaine() {
+    return chJourSem;
   }
 }
