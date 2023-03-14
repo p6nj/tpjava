@@ -5,4 +5,5 @@ module premierevue {
     opens premierevue to javafx.fxml;
 
     exports premierevue;
+    exports vue;
 }
