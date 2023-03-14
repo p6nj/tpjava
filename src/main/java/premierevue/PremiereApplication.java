@@ -1,5 +1,7 @@
 package premierevue;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -11,7 +13,12 @@ public class PremiereApplication extends Application {
         stage.setWidth(400);
         stage.setHeight(150);
         stage.centerOnScreen();
-        stage.setScene(new PremiereScene(new VBox()));
+        PremiersElementsGraphiques scene = new PremiersElementsGraphiques(new VBox());
+        stage.setScene(scene);
+
+        File css = new File("css" + File.separator + "premiersStyles.css");
+        scene.getStylesheets().add(css.toURI().toString());
+
         stage.show();
     }
 
