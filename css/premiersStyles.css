@@ -1,4 +1,25 @@
 .root {
     -fx-padding: 15;
-    -fx-background-color: yellow;
+    -fx-background-color: #f1fffb;
+}
+
+#today {
+    -fx-text-fill: #ff7f50;
+}
+
+#today:hover {
+    -fx-background-color: #753219;
+}
+
+#title {
+    -fx-font-weight: bold;
+}
+
+.scroll-pane {
+    -fx-background: #ddf5ee;
+    -fx-border-color: #5f9ea0;
+}
+
+#date:hover {
+    -fx-background-color: #5bffd0;
 }

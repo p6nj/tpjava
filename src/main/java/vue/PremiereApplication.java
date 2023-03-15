@@ -9,10 +9,11 @@ import javafx.stage.Stage;
 public class PremiereApplication extends Application {
 
     public void start(Stage stage) {
-        stage.setTitle("Hello JavaFX");
+        stage.setTitle("Sélectionnez une date");
         stage.setWidth(300);
         stage.setHeight(500);
         stage.centerOnScreen();
+        stage.setResizable(false);
         Scene scene = new Scene(new VBoxRoot());
         stage.setScene(scene);
 
