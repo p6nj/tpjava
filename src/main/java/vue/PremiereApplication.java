@@ -10,8 +10,8 @@ public class PremiereApplication extends Application {
 
     public void start(Stage stage) {
         stage.setTitle("Hello JavaFX");
-        stage.setWidth(400);
-        stage.setHeight(150);
+        stage.setWidth(300);
+        stage.setHeight(500);
         stage.centerOnScreen();
         Scene scene = new Scene(new VBoxRoot());
         stage.setScene(scene);

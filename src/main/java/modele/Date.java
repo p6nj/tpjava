@@ -167,4 +167,8 @@ public class Date {
   public int getMois() {
     return chMois;
   }
+
+  public int getAnnee() {
+    return chAnnee;
+  }
 }
