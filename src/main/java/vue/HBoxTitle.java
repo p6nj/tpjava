@@ -18,7 +18,7 @@ public class HBoxTitle extends HBox implements ConstantesCalendrier {
         String.format("%s %d", Capitalize.toTitleCase(MOIS[mois.getMois() - 1]), mois.getAnnee()));
     setMargin(labelTitle, new Insets(14));
     labelTitle.setId("title");
-    getChildren().addAll(labelTitle, new HBoxNavigation());
+    getChildren().add(labelTitle);
   }
 
   public void setDate(DateCalendrier date) {

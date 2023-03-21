@@ -1,5 +1,7 @@
 package vue;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;
 import modele.DateCalendrier;
 
@@ -13,10 +15,23 @@ public class VBoxRoot extends VBox {
         date = new DateCalendrier();
 
         title = new HBoxTitle(date);
+        HBoxNavigation controls = new HBoxNavigation();
+        title.getChildren().add(controls);
+        controls.setNextAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent arg0) {
+                next();
+            }
+        });
+        controls.setPrevAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent arg0) {
+                prev();
+            }
+        });
         stackPaneMois = new StackPaneAnnee(date);
 
         getChildren().addAll(title, stackPaneMois);
-        prev();
     }
 
     private void next() {
