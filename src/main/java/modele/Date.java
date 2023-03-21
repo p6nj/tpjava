@@ -171,4 +171,8 @@ public class Date {
   public int getAnnee() {
     return chAnnee;
   }
+
+  public int getJour() {
+    return chJour;
+  }
 }

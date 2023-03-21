@@ -6,4 +6,5 @@ module premierevue {
 
     exports premierevue;
     exports vue;
+    exports modele;
 }
