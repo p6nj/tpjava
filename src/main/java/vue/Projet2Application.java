@@ -9,10 +9,9 @@ import javafx.stage.Stage;
 public class Projet2Application extends Application {
 
     public void start(Stage stage) {
-        stage.setWidth(300);
+        stage.setWidth(350);
         stage.setHeight(500);
         stage.centerOnScreen();
-        stage.setResizable(false);
         Scene scene = new Scene(new VBoxRoot());
         stage.setScene(scene);
         stage.setTitle("Calendrier du mois");
