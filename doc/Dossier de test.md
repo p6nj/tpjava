@@ -14,22 +14,22 @@ author: Breval Ferrari
     - [4. Conclusions](#4-conclusions)
   
 ## 1. Introduction
-`compareTo` qui prend deux dates (dont le self qu'on appelera première) et retourne 0 si elles sont semblables, >0 si la première est postérieure et <0 si la première est inférieure.
+Ce dossier de test est destiné à tester les différentes classes du TP. Comme actuellement seuls les packages `vue`, `modele` et plus tard `controlleur` sont utilisés, il s'agira de tester les méthodes de la version des classes `Date` du package `modele`.
 
 ## 2. Description de la procédure de test
-g
+Les tests seront tous conçus dans ce dossier puis développés, versionnés et enfin exécutés un par un afin de régler au plus tôt les erreurs de conception des tests de manière récursive. L'exécution sera ensuite ordonnée par un schéma de dépendances et cette ordre sera appliqué dans la classe de test à l'aide des décorateurs intégrés à JUnit.
 
 ## 3. Description des informations à enregistrer pour le test
-g
+Le résultat des tests sont directement visibles dans l'onglet du volet latéral de Visual Studio Code fourni par l'extension Tests Explorer après exécution au même endroit.
 
 ### 1. Campagne de test
-| Contexte                             |                                                                                                          |
-| :----------------------------------- | :------------------------------------------------------------------------------------------------------- |
-| Configuration logicielle :           | Visual Studio 1.74, Java Extension Pack 0.9, OpenJDK 11, Ubuntu 22.04 LTS                                |
-| Configuration matérielle :           | AMD® Ryzen 5 4500u with radeon graphics × 6, 8 GiB RAM && 12th Gen Intel® Core™ i3-1215U × 8, 16 GiB RAM |
-| Date de début :  3/02/2023           | Date de finalisation : indéterminée                                                                      |
-| Tests à appliquer :                  | DC                                                                                                       |
-| Responsable de la campagne de test : | Breval Ferrari                                                                                           |
+| Contexte                             |                                                                                                                                                      |
+| :----------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Configuration logicielle :           | Visual Studio 1.77, Java Extension Pack 0.9, Test Explorer, JUnit intégré par Maven (Java Extension Pack), OpenJDK 11, git 2.34.1, Pop!_OS 22.04 LTS |
+| Configuration matérielle :           | AMD® Ryzen 5 4500u with radeon graphics × 6, 8 GiB RAM && 12th Gen Intel® Core™ i3-1215U × 8, 16 GiB RAM                                             |
+| Date de début :  31/03/2023          | Date de finalisation : indéterminée                                                                                                                  |
+| Tests à appliquer :                  | DC,                                                                                                                                                  |
+| Responsable de la campagne de test : | Breval Ferrari                                                                                                                                       |
 
 ### 2. Tests
 | `Date.compareTo`       |                                                                                 |
