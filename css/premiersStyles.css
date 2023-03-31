@@ -23,3 +23,8 @@
 #date:hover {
     -fx-background-color: #5bffd0;
 }
+
+#opaque {
+    -fx-background-color: #ddf5ee;
+    -fx-border-color: #5f9ea0;
+}

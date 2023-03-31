@@ -1,14 +1,16 @@
 package vue;
 
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
 import modele.DateCalendrier;
 
 public class StackPaneAnnee extends StackPane {
   public StackPaneAnnee(DateCalendrier date) {
     super();
+    ToggleGroup group = new ToggleGroup();
     for (int i = 1; i < 13; i++)
-      getChildren().add(new ScrollPaneMois(date, i));
-    while (((ScrollPaneMois) getChildren().get(0)).getMois() != date.getMois() + 1)
+      getChildren().add(new TilePaneMois(date, i, group));
+    while (((TilePaneMois) getChildren().get(0)).getMois() != date.getMois() + 1)
       next();
 
   }
@@ -22,7 +24,7 @@ public class StackPaneAnnee extends StackPane {
   }
 
   public void show(int mois) {
-    while (((ScrollPaneMois) getChildren().get(0)).getMois() != mois)
+    while (((TilePaneMois) getChildren().get(0)).getMois() != mois)
       next();
     next();
   }
