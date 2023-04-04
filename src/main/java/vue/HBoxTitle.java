@@ -9,42 +9,17 @@ import javafx.scene.layout.Priority;
 import modele.CalendrierDuMois;
 import modele.Capitalize;
 import modele.DateCalendrier;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
 public class HBoxTitle extends HBox implements ConstantesCalendrier {
   private Label labelTitle;
+  private HBoxNavigation controls;
 
   public HBoxTitle(DateCalendrier date, VBoxCalendrier sup) {
     super();
-    HBoxNavigation controls = new HBoxNavigation();
+    controls = new HBoxNavigation();
     HBox.setHgrow(controls, Priority.ALWAYS);
     getChildren().add(controls);
     controls.setAlignment(Pos.TOP_LEFT);
-    controls.setNextAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent arg0) {
-        sup.next();
-      }
-    });
-    controls.setPrevAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent arg0) {
-        sup.prev();
-      }
-    });
-    controls.setFirstAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent arg0) {
-        sup.first();
-      }
-    });
-    controls.setLastAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent arg0) {
-        sup.last();
-      }
-    });
     CalendrierDuMois mois = new CalendrierDuMois(date.getMois(), date.getAnnee());
     labelTitle = new Label(
         String.format("%s %d", Capitalize.toTitleCase(MOIS[mois.getMois() - 1]), mois.getAnnee()));
@@ -59,4 +34,9 @@ public class HBoxTitle extends HBox implements ConstantesCalendrier {
     CalendrierDuMois mois = new CalendrierDuMois(date.getMois(), date.getAnnee());
     labelTitle.setText(String.format("%s %d", Capitalize.toTitleCase(MOIS[mois.getMois() - 1]), mois.getAnnee()));
   }
+
+  public HBoxNavigation controls() {
+    return controls;
+  }
+
 }
