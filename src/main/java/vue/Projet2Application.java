@@ -9,10 +9,10 @@ import javafx.stage.Stage;
 public class Projet2Application extends Application {
 
     public void start(Stage stage) {
-        stage.setWidth(350);
-        stage.setHeight(500);
+        stage.setWidth(650);
+        stage.setHeight(400);
         stage.centerOnScreen();
-        Scene scene = new Scene(new VBoxRoot());
+        Scene scene = new Scene(new HBoxRoot());
         stage.setScene(scene);
         stage.setTitle("Calendrier du mois");
 

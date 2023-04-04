@@ -3,12 +3,12 @@ package vue;
 import javafx.scene.layout.VBox;
 import modele.DateCalendrier;
 
-public class VBoxRoot extends VBox {
+public class VBoxCalendrier extends VBox {
     private DateCalendrier date;
     private StackPaneAnnee stackPaneMois;
     private HBoxTitle title;
 
-    public VBoxRoot() {
+    public VBoxCalendrier() {
         super(10);
         date = new DateCalendrier();
 

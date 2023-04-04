@@ -15,7 +15,7 @@ import javafx.event.EventHandler;
 public class HBoxTitle extends HBox implements ConstantesCalendrier {
   private Label labelTitle;
 
-  public HBoxTitle(DateCalendrier date, VBoxRoot sup) {
+  public HBoxTitle(DateCalendrier date, VBoxCalendrier sup) {
     super();
     HBoxNavigation controls = new HBoxNavigation();
     HBox.setHgrow(controls, Priority.ALWAYS);
@@ -50,6 +50,7 @@ public class HBoxTitle extends HBox implements ConstantesCalendrier {
         String.format("%s %d", Capitalize.toTitleCase(MOIS[mois.getMois() - 1]), mois.getAnnee()));
     setMargin(labelTitle, new Insets(14));
     labelTitle.setId("title");
+    labelTitle.setAlignment(Pos.TOP_RIGHT);
     setHgrow(labelTitle, Priority.ALWAYS);
     getChildren().add(labelTitle);
   }
