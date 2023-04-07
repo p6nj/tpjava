@@ -11,7 +11,7 @@ author: Breval Ferrari
     - [1. Campagne de test](#1-campagne-de-test)
     - [2. Tests](#2-tests)
     - [3. Résultats](#3-résultats)
-    - [4. Conclusions](#4-conclusions)
+  - [4. Conclusions](#4-conclusions)
   
 ## 1. Introduction
 Ce dossier de test est destiné à tester les différentes classes du TP. Comme actuellement seuls les packages `vue`, `modele` et plus tard `controlleur` sont utilisés, il s'agira de tester les méthodes de la version des classes `Date` du package `modele`.
@@ -72,5 +72,5 @@ Le résultat des tests sont directement visibles dans l'onglet du volet latéral
 | Résultat :                   | Non fait       |
 | Occurences des résultats :   | Systématique   |
 
-### 4. Conclusions
+## 4. Conclusions
 Rien à dire
