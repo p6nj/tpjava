@@ -8,10 +8,10 @@ author: Breval Ferrari
   - [1. Introduction](#1-introduction)
   - [2. Description de la procédure de test](#2-description-de-la-procédure-de-test)
   - [3. Description des informations à enregistrer pour le test](#3-description-des-informations-à-enregistrer-pour-le-test)
-    - [1. Campagne de test](#1-campagne-de-test)
-    - [2. Tests](#2-tests)
-    - [3. Résultats](#3-résultats)
-  - [4. Conclusions](#4-conclusions)
+  - [4. Campagne de test](#4-campagne-de-test)
+    - [1. Tests](#1-tests)
+    - [2. Résultats](#2-résultats)
+  - [5. Conclusion](#5-conclusion)
   
 ## 1. Introduction
 Ce dossier de test est destiné à tester les différentes classes du TP. Comme actuellement seuls les packages `vue`, `modele` et plus tard `controlleur` sont utilisés, il s'agira de tester les méthodes de la version des classes `Date` du package `modele`. Notez que l'énoncé nous demande de tester la méthode `dernierJourDuMois()` mais que le nom de cette fonction dans le projet actuel est `nbJoursDansMois()` ; cela n'affecte pas le comportement de la fonction et donc le test associé.
@@ -21,8 +21,8 @@ Les tests seront tous conçus dans ce dossier puis développés, exécutés et e
 
 ## 3. Description des informations à enregistrer pour le test
 Le résultat des tests sont directement visibles dans l'onglet du volet latéral de Visual Studio Code fourni par l'extension Tests Explorer après exécution au même endroit.
-return;
-### 1. Campagne de test
+
+## 4. Campagne de test
 | Contexte                             |                                                                                                                                                      |
 | :----------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Configuration logicielle :           | Visual Studio 1.77, Java Extension Pack 0.9, Test Explorer, JUnit intégré par Maven (Java Extension Pack), OpenJDK 11, git 2.34.1, Pop!_OS 22.04 LTS |
@@ -31,7 +31,7 @@ return;
 | Tests à appliquer :                  | CT                                                                                                                                                   |
 | Responsable de la campagne de test : | Breval Ferrari                                                                                                                                       |
 
-### 2. Tests<!-- date +"%d/%m/%Y" -->
+### 1. Tests<!-- date +"%d/%m/%Y" -->
 | `anneeEstBissextile()` |                                                                                                            |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------- |
 | Identification : AB    | Version : 0.1                                                                                              |
@@ -143,7 +143,7 @@ return;
 | P20    |   <   |   >   |   =   |         >          |
 | P21    |   <   |   <   |   =   |         <          |
 
-### 3. Résultats
+### 2. Résultats
 | Test 1                       |                |
 | :--------------------------- | :------------- |
 | Référence du test appliqué : | AB             |
@@ -168,5 +168,5 @@ return;
 | Résultat :                   | OK             |
 | Occurences des résultats :   | Systématique   |
 
-## 4. Conclusions
+## 5. Conclusion
 /
