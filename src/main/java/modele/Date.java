@@ -84,6 +84,10 @@ public class Date {
     return chMois % 2 == 0 ? 31 : 30;
   }
 
+  private int nbJoursDansMois(int chMois, int chAnnee) {
+    return new Date(1, chMois, chAnnee).nbJoursDansMois();
+  }
+
   /**
    * Validity test for the current date.
    * Checks:
@@ -130,7 +134,8 @@ public class Date {
    *         same.
    */
   public int compareTo(Date other) {
-    return this.toInt() - other.toInt();
+    int result = this.toInt() - other.toInt();
+    return result == 0 ? 0 : result > 0 ? 1 : -1;
   }
 
   /**
@@ -151,7 +156,7 @@ public class Date {
   public Date dateDeLaVeille() {
     if (chJour == 1) {
       if (chMois == 1)
-        return new Date(nbJoursDansMois((chMois - 1)), 12, (chAnnee - 1));
+        return new Date(nbJoursDansMois(12, (chAnnee - 1)), 12, (chAnnee - 1));
       return new Date(nbJoursDansMois((chMois - 1)), (chMois - 1), chAnnee);
     }
     return new Date((chJour - 1), chMois, chAnnee);

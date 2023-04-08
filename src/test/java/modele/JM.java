@@ -15,7 +15,7 @@ public class JM {
     private int year;
     private int ndays;
 
-    @Parameters(name = "{index}: {2} days in {0}/{1}")
+    @Parameters(name = "P{index} | {0}/{1} | {2}")
     public static final Iterable<Object[]> data() {
         return Arrays.asList(new Object[][] {
                 { 1, 2021, 31 }, { 3, 2021, 31 }, { 5, 2021, 31 }, { 7, 2021, 31 }, { 8, 2021, 31 }, { 10, 2021, 31 },

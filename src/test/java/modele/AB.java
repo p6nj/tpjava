@@ -14,7 +14,7 @@ public class AB {
     private int year;
     private boolean isLeap;
 
-    @Parameters(name = "{index}: {0} is leap : {1}")
+    @Parameters(name = "P{index} | {0} | {1}")
     public static final Iterable<Object[]> data() {
         return Arrays.asList(new Object[][] {
                 { 2016, true }, { 2020, true }, { 2024, true }, { 2028, true }, { 2017, false }, { 2018, false },
