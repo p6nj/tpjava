@@ -28,7 +28,7 @@ Le résultat des tests sont directement visibles dans l'onglet du volet latéral
 | Configuration logicielle :           | Visual Studio 1.77, Java Extension Pack 0.9, Test Explorer, JUnit intégré par Maven (Java Extension Pack), OpenJDK 19, git 2.34.1, Pop!_OS 22.04 LTS |
 | Configuration matérielle :           | AMD® Ryzen 5 4500u with radeon graphics × 6, 8 GiB RAM && 12th Gen Intel® Core™ i3-1215U × 8, 16 GiB RAM                                             |
 | Date de début :  31/03/2023          | Date de finalisation : indéterminée                                                                                                                  |
-| Tests à appliquer :                  | CT                                                                                                                                                   |
+| Tests à appliquer :                  | NA                                                                                                                                                   |
 | Responsable de la campagne de test : | Breval Ferrari                                                                                                                                       |
 
 ### 1. Tests<!-- date +"%d/%m/%Y" -->
@@ -253,4 +253,4 @@ Partons d'une instance correspondant au 02/02/02
 | Occurences des résultats :   | Systématique   |
 
 ## 5. Conclusion
-/
+NA
