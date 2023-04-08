@@ -29,6 +29,13 @@ public class Date {
     chAnnee = annee;
   }
 
+  public Date() {
+    DateCalendrier d = new DateCalendrier();
+    chJour = d.chJour;
+    chMois = d.chMois;
+    chAnnee = d.chAnnee;
+  }
+
   /**
    * Stringifies the date instance.
    * Format: DD/MM/YYYY

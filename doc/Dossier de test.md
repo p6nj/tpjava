@@ -100,6 +100,18 @@ return;
 | P6     |  02   | 2020  |         29         |
 
 
+| `Date()`               |                                                                                                                                                                                                                                                                      |
+| :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Identification : DA    | Version : 0.1                                                                                                                                                                                                                                                        |
+| Description :          | Constructeur de la classe `Date` sans paramètre qui retourne la date courante. Il conviendra pour ce test d'utiliser une autre méthode de récupération de date ; comme les tests sont exécutés sur une distribution Linux, la commande `date` de l'OS sera utilisée. |
+| Resesources requises : | Classe `Date` du package `modele` situé dans `/src/main/java/modele`, Java JDK + JRE                                                                                                                                                                                 |
+| Responsable :          | Breval Ferrari                                                                                                                                                                                                                                                       |
+
+| Classe | Résultats Attendus |
+| :----- | :----------------: |
+| P1     |   Date actuelle    |
+
+
 | `compareTo()`          |                                                                                      |
 | :--------------------- | :----------------------------------------------------------------------------------- |
 | Identification : CT    | Version : 0.1                                                                        |
@@ -143,6 +155,14 @@ return;
 | Test 2                       |                |
 | :--------------------------- | :------------- |
 | Référence du test appliqué : | JM             |
+| Responsable :                | Breval Ferrari |
+| Date d'application :         | 08/04/2023     |
+| Résultat :                   | OK             |
+| Occurences des résultats :   | Systématique   |
+
+| Test 3                       |                |
+| :--------------------------- | :------------- |
+| Référence du test appliqué : | DA             |
 | Responsable :                | Breval Ferrari |
 | Date d'application :         | 08/04/2023     |
 | Résultat :                   | OK             |
