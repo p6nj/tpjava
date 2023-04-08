@@ -1,5 +1,6 @@
 package modele;
 
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
@@ -11,6 +12,8 @@ import org.junit.Test;
 public class DA {
     @Test
     public void test() {
+        if (System.getProperty("os.name").startsWith("Windows"))
+            return;
         try {
             Process process = Runtime.getRuntime().exec("date +%d/%m/%Y");
             BufferedReader reader = new BufferedReader(
@@ -19,7 +22,7 @@ public class DA {
             reader.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            fail(e.getMessage());
         }
     }
 }
