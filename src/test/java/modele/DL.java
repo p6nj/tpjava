@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -28,6 +29,7 @@ public class DL {
     }
 
     @Test
+    @After
     public void test() {
         assertEquals(tomorrow.toString(), today.dateDuLendemain().toString());
     }

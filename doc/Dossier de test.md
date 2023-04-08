@@ -1,17 +1,18 @@
----
-title:  Dossier de tests
-author: Breval Ferrari
----
-# Dossier de tests
+# Dossier de tests<!-- omit in toc -->
 ## Sommaire<!-- omit in toc -->
-- [Dossier de tests](#dossier-de-tests)
-  - [1. Introduction](#1-introduction)
-  - [2. Description de la procédure de test](#2-description-de-la-procédure-de-test)
-  - [3. Description des informations à enregistrer pour le test](#3-description-des-informations-à-enregistrer-pour-le-test)
-  - [4. Campagne de test](#4-campagne-de-test)
-    - [1. Tests](#1-tests)
-    - [2. Résultats](#2-résultats)
-  - [5. Conclusion](#5-conclusion)
+- [1. Introduction](#1-introduction)
+- [2. Description de la procédure de test](#2-description-de-la-procédure-de-test)
+- [3. Description des informations à enregistrer pour le test](#3-description-des-informations-à-enregistrer-pour-le-test)
+- [4. Campagne de test](#4-campagne-de-test)
+  - [1. Tests](#1-tests)
+    - [`anneeEstBissextile()`](#anneeestbissextile)
+    - [`nbJoursDansMois()`](#nbjoursdansmois)
+    - [`Date()`](#date)
+    - [`compareTo()`](#compareto)
+    - [`dateDuLendemain()`](#datedulendemain)
+    - [`dateDeLaVeille()`](#datedelaveille)
+  - [2. Résultats](#2-résultats)
+- [5. Conclusion](#5-conclusion)
   
 ## 1. Introduction
 Ce dossier de test est destiné à tester les différentes classes du TP. Comme actuellement seuls les packages `vue`, `modele` et plus tard `controlleur` sont utilisés, il s'agira de tester les méthodes de la version des classes `Date` du package `modele`. Notez que l'énoncé nous demande de tester la méthode `dernierJourDuMois()` mais que le nom de cette fonction dans le projet actuel est `nbJoursDansMois()` ; cela n'affecte pas le comportement de la fonction et donc le test associé.
@@ -25,14 +26,15 @@ Le résultat des tests sont directement visibles dans l'onglet du volet latéral
 ## 4. Campagne de test
 | Contexte                             |                                                                                                                                                      |
 | :----------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Configuration logicielle :           | Visual Studio 1.77, Java Extension Pack 0.9, Test Explorer, JUnit intégré par Maven (Java Extension Pack), OpenJDK 19, git 2.34.1, Pop!_OS 22.04 LTS |
+| Configuration logicielle :           | Visual Studio 1.77, Java Extension Pack 0.9, Test Explorer, JUnit intégré par Maven (Java Extension Pack), OpenJDK 11, git 2.34.1, Pop!_OS 22.04 LTS |
 | Configuration matérielle :           | AMD® Ryzen 5 4500u with radeon graphics × 6, 8 GiB RAM && 12th Gen Intel® Core™ i3-1215U × 8, 16 GiB RAM                                             |
 | Date de début :  31/03/2023          | Date de finalisation : indéterminée                                                                                                                  |
 | Tests à appliquer :                  | NA                                                                                                                                                   |
 | Responsable de la campagne de test : | Breval Ferrari                                                                                                                                       |
 
-### 1. Tests<!-- date +"%d/%m/%Y" -->
-| `anneeEstBissextile()` |                                                                                                            |
+### 1. Tests
+#### `anneeEstBissextile()`
+| Information            |                                                                                                            |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------- |
 | Identification : AB    | Version : 0.1                                                                                              |
 | Description :          | Renvoie un boolean indiquant la bissextilité de l'année. Quatre années de chaque catégorie seront testées. |
@@ -55,8 +57,8 @@ Le résultat des tests sont directement visibles dans l'onglet du volet latéral
 | P6     | 2019  |   F   |
 | P7     | 2023  |   F   |
 
-
-| `nbJoursDansMois()`    |                                                                                            |
+#### `nbJoursDansMois()`
+| Informations           |                                                                                            |
 | :--------------------- | :----------------------------------------------------------------------------------------- |
 | Identification : JM    | Version : 0.1                                                                              |
 | Description :          | Cette fonction retourne le nombre de jours dans le mois de l'instance de la classe `Date`. |
@@ -99,8 +101,8 @@ Le résultat des tests sont directement visibles dans l'onglet du volet latéral
 | P22    |  02   | 2021  |  28   |
 | P23    |  02   | 2020  |  29   |
 
-
-| `Date()`               |                                                                                                                                                                                                                                                                      |
+#### `Date()`
+| Informations           |                                                                                                                                                                                                                                                                      |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Identification : DA    | Version : 0.1                                                                                                                                                                                                                                                        |
 | Description :          | Constructeur de la classe `Date` sans paramètre qui retourne la date courante. Il conviendra pour ce test d'utiliser une autre méthode de récupération de date ; comme les tests sont exécutés sur une distribution Linux, la commande `date` de l'OS sera utilisée. |
@@ -111,8 +113,8 @@ Le résultat des tests sont directement visibles dans l'onglet du volet latéral
 | :----- | :----------------: |
 | P1     |   Date actuelle    |
 
-
-| `compareTo()`          |                                                                                      |
+#### `compareTo()`
+| Informations           |                                                                                      |
 | :--------------------- | :----------------------------------------------------------------------------------- |
 | Identification : CT    | Version : 0.1                                                                        |
 | Description :          | Implémentation de la fonction `compareTo` incluse dans les librairies standard.      |
@@ -169,8 +171,8 @@ Partons d'une instance correspondant au 02/02/02
 | P19    |   1   |   3   |   2   |  01   |
 | P20    |   1   |   1   |   2   |  -1   |
 
-
-| `dateDuLendemain()`    |                                                                                      |
+#### `dateDuLendemain()`
+| Informations           |                                                                                      |
 | :--------------------- | :----------------------------------------------------------------------------------- |
 | Identification : DL    | Version : 0.1                                                                        |
 | Description :          | Renvoie une instance de `Date` correspondant à la date du lendemain.                 |
@@ -186,8 +188,8 @@ Partons d'une instance correspondant au 02/02/02
 | P4     |  29/02/2000   |     01/03/2000     |
 | P5     |  31/12/2001   |     01/01/2002     |
 
-
-| `dateDeLaVeille()`     |                                                                                      |
+#### `dateDeLaVeille()`
+| Informations           |                                                                                      |
 | :--------------------- | :----------------------------------------------------------------------------------- |
 | Identification : DV    | Version : 0.1                                                                        |
 | Description :          | Renvoie une instance de `Date` correspondant à la date de la veille.                 |
@@ -253,4 +255,4 @@ Partons d'une instance correspondant au 02/02/02
 | Occurences des résultats :   | Systématique   |
 
 ## 5. Conclusion
-NA
+Certains tests ont permis de repérer des cas particuliers où le comportement des fonctions était anormal, ce qui a conduit à une réécriture du code. Comme les tests sont relativement indépendants, les tests n'ont que peu de hiérarchie et seuls les tests DL et DV ont été subordonnés à CT. Enfin, ce dossier de test m'a permis d'apprendre beaucoup sur la structure d'un projet sous Maven ainsi que l'organisation des tests sous JUnit.
