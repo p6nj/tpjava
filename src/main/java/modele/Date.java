@@ -39,15 +39,19 @@ public class Date {
     return String.format("%02d/%02d/%04d", chJour, chMois, chAnnee);
   }
 
+  boolean anneeEstBissextile() {
+    return chAnnee % 4 == 0 && chAnnee % 100 != 0 || chAnnee % 400 == 0;
+  }
+
   /**
    * Computes the number of days in the current month.
    * 
    * @return int
    */
-  private int nbJoursDansMois() {
+  int nbJoursDansMois() {
     if (chMois == 2) {
-      return chAnnee % 4 == 0 && chAnnee % 100 != 0 || chAnnee % 400 == 0 ? 28
-          : 29;
+      return anneeEstBissextile() ? 29
+          : 28;
     }
     if (chMois < 8) {
       return chMois % 2 == 0 ? 30 : 31;
@@ -64,8 +68,8 @@ public class Date {
    */
   private int nbJoursDansMois(int chMois) {
     if (chMois == 2) {
-      return chAnnee % 4 == 0 && chAnnee % 100 != 0 || chAnnee % 400 == 0 ? 28
-          : 29;
+      return anneeEstBissextile() ? 29
+          : 28;
     }
     if (chMois < 8) {
       return chMois % 2 == 0 ? 30 : 31;

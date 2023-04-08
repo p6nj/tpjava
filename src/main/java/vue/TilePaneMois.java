@@ -1,6 +1,5 @@
 package vue;
 
-import modele.ConstantesCalendrier;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -13,6 +12,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import modele.CalendrierDuMois;
+import modele.ConstantesCalendrier;
 import modele.DateCalendrier;
 
 public class TilePaneMois extends TilePane implements ConstantesCalendrier {
