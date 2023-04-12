@@ -8,6 +8,7 @@ import vue.HBoxRoot;
 public class Controleur {
     public Controleur(HBoxRoot root) {
         PlanningActions actions = new PlanningActions(root.getVbc());
+        FormActions formhandler = new FormActions(root);
         HBoxNavigation planningControls = root.getVbc().getTitle().controls();
         planningControls.setNextAction(new EventHandler<ActionEvent>() {
             @Override

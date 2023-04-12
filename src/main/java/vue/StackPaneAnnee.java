@@ -5,14 +5,16 @@ import javafx.scene.layout.StackPane;
 import modele.DateCalendrier;
 
 public class StackPaneAnnee extends StackPane {
+  private ToggleGroup group;
+
   public StackPaneAnnee(DateCalendrier date) {
     super();
-    ToggleGroup group = new ToggleGroup();
+    group = new ToggleGroup();
     for (int i = 1; i < 13; i++)
       getChildren().add(new TilePaneMois(date, i, group));
+    group.selectToggle(group.getToggles().get(0));
     while (((TilePaneMois) getChildren().get(0)).getMois() != date.getMois() + 1)
       next();
-
   }
 
   public void next() {
@@ -27,5 +29,9 @@ public class StackPaneAnnee extends StackPane {
     while (((TilePaneMois) getChildren().get(0)).getMois() != mois)
       next();
     next();
+  }
+
+  public DateCalendrier getSelection() {
+    return (DateCalendrier) group.getSelectedToggle().getUserData();
   }
 }

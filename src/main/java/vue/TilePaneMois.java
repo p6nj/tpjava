@@ -1,9 +1,6 @@
 package vue;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -38,12 +35,6 @@ public class TilePaneMois extends TilePane implements ConstantesCalendrier {
             boutonDate.setToggleGroup(group);
             getChildren().add(boutonDate);
             boutonDate.setUserData(d);
-            boutonDate.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent a) {
-                    System.out.println(((Node) a.getSource()).getUserData());
-                }
-            });
             boutonDate.setId(
                     d.compareTo(date) == 0 ? "today" : d.getMois() != mois ? "dateHorsMois" : "date");
         }
