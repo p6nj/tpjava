@@ -2,37 +2,15 @@ package controleur;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import vue.HBoxNavigation;
 import vue.HBoxRoot;
 
-public class Controleur {
-    public Controleur(HBoxRoot root) {
-        PlanningActions actions = new PlanningActions(root.getVbc());
-        FormActions formhandler = new FormActions(root);
-        HBoxNavigation planningControls = root.getVbc().getTitle().controls();
-        planningControls.setNextAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent arg0) {
-                actions.next();
-            }
-        });
-        planningControls.setPrevAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent arg0) {
-                actions.prev();
-            }
-        });
-        planningControls.setFirstAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent arg0) {
-                actions.first();
-            }
-        });
-        planningControls.setLastAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent arg0) {
-                actions.last();
-            }
-        });
+public class Controleur implements EventHandler<ActionEvent> {
+    @Override
+    public void handle(ActionEvent e) {
+        try {
+            System.out.println(HBoxRoot.getReservation());
+        } catch (Exception e1) {
+            System.err.println("Impossible de récupérer la réservation: " + e1.toString());
+        }
     }
 }

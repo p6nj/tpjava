@@ -4,19 +4,17 @@ import controleur.Controleur;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.HBox;
+import modele.DateCalendrier;
 import modele.Reservation;
 
 public class HBoxRoot extends HBox {
-    private VBoxCalendrier vbc;
-    private GridPaneFormulaireRéservation gpfr;
+    private static VBoxCalendrier vbc;
+    private static GridPaneFormulaireRéservation gpfr;
     private Controleur c;
 
     public HBoxRoot() {
         super(10);
-        vbc = new VBoxCalendrier();
-        gpfr = new GridPaneFormulaireRéservation();
-        getChildren().addAll(vbc, gpfr);
-        c = new Controleur(this);
+        setDefaults();
     }
 
     public VBoxCalendrier getVbc() {
@@ -35,7 +33,7 @@ public class HBoxRoot extends HBox {
         this.gpfr = gpfr;
     }
 
-    public Reservation getReservation() throws Exception {
+    public static Reservation getReservation() throws Exception {
         return new Reservation(vbc.getStackPane().getSelection(), gpfr.getPlageHoraire(), gpfr.getName());
     }
 
@@ -52,7 +50,66 @@ public class HBoxRoot extends HBox {
         vbc = new VBoxCalendrier();
         gpfr = new GridPaneFormulaireRéservation();
         getChildren().addAll(vbc, gpfr);
-        c = new Controleur(this);
+        HBoxNavigation planningControls = vbc.getTitle().controls();
+        planningControls.setNextAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent arg0) {
+                next();
+            }
+        });
+        planningControls.setPrevAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent arg0) {
+                prev();
+            }
+        });
+        planningControls.setFirstAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent arg0) {
+                first();
+            }
+        });
+        planningControls.setLastAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent arg0) {
+                last();
+            }
+        });
+        c = new Controleur();
+        setSaveAction(c);
+        setCancelAction(e -> setDefaults());
+    }
+
+    public void next() {
+        DateCalendrier date = vbc.getDate();
+        date = new DateCalendrier(date.getJour(), date.getMois() == 12 ? 1 : date.getMois() + 1, date.getAnnee());
+        vbc.setDate(date);
+        vbc.getStackPane().next();
+        vbc.getTitle().setDate(date);
+    }
+
+    public void prev() {
+        DateCalendrier date = vbc.getDate();
+        date = new DateCalendrier(date.getJour(), date.getMois() == 1 ? 12 : date.getMois() - 1, date.getAnnee());
+        vbc.setDate(date);
+        vbc.getStackPane().prev();
+        vbc.getTitle().setDate(date);
+    }
+
+    public void first() {
+        DateCalendrier date = vbc.getDate();
+        date = new DateCalendrier(date.getJour(), 1, date.getAnnee());
+        vbc.setDate(date);
+        vbc.getStackPane().show(1);
+        vbc.getTitle().setDate(date);
+    }
+
+    public void last() {
+        DateCalendrier date = vbc.getDate();
+        date = new DateCalendrier(date.getJour(), 12, date.getAnnee());
+        vbc.setDate(date);
+        vbc.getStackPane().show(12);
+        vbc.getTitle().setDate(date);
     }
 
 }
