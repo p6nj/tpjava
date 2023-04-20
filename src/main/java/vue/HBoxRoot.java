@@ -51,6 +51,7 @@ public class HBoxRoot extends HBox {
 
     public void setDefaults() {
         getChildren().clear();
+        c = new Controleur();
         TilePaneMois.reset();
         vbc = new VBoxCalendrier();
         gpfr = new GridPaneFormulaireRéservation();
@@ -82,7 +83,6 @@ public class HBoxRoot extends HBox {
                 last();
             }
         });
-        c = new Controleur();
         setSaveAction(c);
         setCancelAction(e -> setDefaults());
     }

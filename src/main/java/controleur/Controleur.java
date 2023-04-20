@@ -11,7 +11,8 @@ public class Controleur implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e) {
         if (e.getSource() instanceof ToggleButton) {
-            GridPaneFormulaireRéservation.setSemaine(StackPaneAnnee.getSelectedToggleIndex() / 7);
+            int index = StackPaneAnnee.getSelectedToggleIndex() / 7;
+            GridPaneFormulaireRéservation.setSemaine(index == 0 ? 52 : index);
         } else
             try {
                 System.out.println(HBoxRoot.getReservation());

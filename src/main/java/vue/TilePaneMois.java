@@ -40,7 +40,7 @@ public class TilePaneMois extends TilePane implements ConstantesCalendrier {
             boutonDate = new ToggleButton(Integer.toString(d.getJour()));
             boutonDate.setMinSize(42, 40);
             boutonDate.setToggleGroup(group);
-            boutonDate.setOnAction(new Controleur());
+            boutonDate.setOnAction(HBoxRoot.getControleur());
             if (i++ % 7 == 0) {
                 l = new Label(String.format("%d", i == 1 ? 52 : i / 7));
                 l.setId("labelcalendrier");

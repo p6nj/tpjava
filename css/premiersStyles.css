@@ -1,60 +1,77 @@
 .root {
+    /* Colors (from coolors.co) */
+    light2: #feeafa;
+    light1: #efd3d7;
+    dark1: #cbc0d3;
+    dark2: #8e9aaf;
+    alt: #dee2ff;
+    /* Root style */
     -fx-padding: 15;
-    -fx-background-color: #f1fffb;
+    -fx-background-color: light1;
 }
 
 #today {
-    -fx-text-fill: #42be9b;
     -fx-font-weight: bold;
 }
 
 #today:hover,
 #today:selected {
-    -fx-background-color: #42be9b;
-    -fx-text-fill: white;
+    -fx-background-color: alt;
+    -fx-text-fill: black;
+    -fx-font-weight: normal;
 }
 
 #title {
     -fx-font-weight: bold;
+    -fx-text-fill: dark2;
 }
 
 .scroll-pane,
-.button {
-    -fx-background: #ddf5ee;
-    -fx-border-color: #5f9ea0;
+.button,
+.choice-box {
+    -fx-background-color: light2;
 }
 
-.button:hover {
-    -fx-background-color: #467577;
+.button:hover,
+.choice-box:hover {
+    -fx-background-color: dark1;
+}
+
+.button:pressed,
+.toggle-button:pressed,
+.radio-button:pressed,
+.choice-box:pressed {
+    -fx-background-color: dark2;
     -fx-text-fill: white;
 }
 
 #date:hover,
 #date:selected {
-    -fx-background-color: #5bffd0;
+    -fx-background-color: dark2;
+    -fx-text-fill: white;
 }
 
 #dateHorsMois:hover {
-    -fx-background-color: #5bffd14b;
+    -fx-background-color: dark1;
+    -fx-text-fill: black;
 }
 
 #dateHorsMois {
-    -fx-text-fill: #00000075;
+    -fx-text-fill: dark1;
 }
 
 #dateHorsMois,
 #today,
-#date,
-.button {
+#date {
     -fx-background-color: RGBA(0, 0, 0, 0);
 }
 
 #labelcalendrier {
     -fx-font-weight: bold;
-    -fx-text-fill: #467577;
+    -fx-text-fill: dark2;
 }
 
 #opaque {
-    -fx-background-color: #ddf5ee;
-    -fx-border-color: #5f9ea0;
+    -fx-background-color: light2;
+    -fx-border-color: RGBA(0, 0, 0, 0);
 }
