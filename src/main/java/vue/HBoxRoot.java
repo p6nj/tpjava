@@ -3,6 +3,7 @@ package vue;
 import controleur.Controleur;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import modele.DateCalendrier;
 import modele.Reservation;
@@ -10,11 +11,12 @@ import modele.Reservation;
 public class HBoxRoot extends HBox {
     private static VBoxCalendrier vbc;
     private static GridPaneFormulaireRéservation gpfr;
-    private static TableViewReservation tableDesReservations = new TableViewReservation();;
+    private static TableViewReservation tableDesReservations;
     private static Controleur c;
 
     public HBoxRoot() {
         super(10);
+        setAlignment(Pos.TOP_LEFT);
         setDefaults();
     }
 
@@ -49,8 +51,11 @@ public class HBoxRoot extends HBox {
 
     public void setDefaults() {
         getChildren().clear();
+        TilePaneMois.reset();
         vbc = new VBoxCalendrier();
         gpfr = new GridPaneFormulaireRéservation();
+        if (tableDesReservations == null)
+            tableDesReservations = new TableViewReservation();
         getChildren().addAll(vbc, gpfr, tableDesReservations);
         HBoxNavigation planningControls = vbc.getTitle().controls();
         planningControls.setNextAction(new EventHandler<ActionEvent>() {

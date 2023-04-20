@@ -15,7 +15,7 @@ import modele.DateCalendrier;
 
 public class TilePaneMois extends TilePane implements ConstantesCalendrier {
     private int mois;
-    private static int i = 1;
+    private static int i = 0;
 
     public TilePaneMois(DateCalendrier date, int mois, ToggleGroup group) {
         super();
@@ -35,25 +35,35 @@ public class TilePaneMois extends TilePane implements ConstantesCalendrier {
             labelDate.setId("labelcalendrier");
             getChildren().add(labelDate);
         }
+        ToggleButton boutonDate = new ToggleButton();
         for (DateCalendrier d : calMois.getDates()) {
-            ToggleButton boutonDate = new ToggleButton(Integer.toString(d.getJour()));
+            boutonDate = new ToggleButton(Integer.toString(d.getJour()));
             boutonDate.setMinSize(42, 40);
             boutonDate.setToggleGroup(group);
             boutonDate.setOnAction(new Controleur());
-            if (i++ % 7 == 1) {
-                l = new Label(String.format("%d", i / 7));
+            if (i++ % 7 == 0) {
+                l = new Label(String.format("%d", i == 1 ? 52 : i / 7));
                 l.setId("labelcalendrier");
                 getChildren().add(l);
             }
             getChildren().add(boutonDate);
             boutonDate.setUserData(d);
-            boutonDate.setId(
-                    d.compareTo(date) == 0 ? "today" : d.getMois() != mois ? "dateHorsMois" : "date");
+            if (d.compareTo(date) == 0) {
+                boutonDate.setId("today");
+            } else
+                boutonDate.setId(
+                        d.getMois() != mois ? "dateHorsMois" : "date");
         }
         setAccessibleText(MOIS[calMois.getMois() - 1]);
+        if (boutonDate != null && boutonDate.getId().equals("dateHorsMois"))
+            i -= 7;
     }
 
     public int getMois() {
         return mois;
+    }
+
+    public static void reset() {
+        i = 0;
     }
 }

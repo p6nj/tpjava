@@ -4,23 +4,33 @@
 }
 
 #today {
-    -fx-text-fill: #ff7f50;
+    -fx-text-fill: #42be9b;
+    -fx-font-weight: bold;
 }
 
-#today:hover {
-    -fx-background-color: #753219;
+#today:hover,
+#today:selected {
+    -fx-background-color: #42be9b;
+    -fx-text-fill: white;
 }
 
 #title {
     -fx-font-weight: bold;
 }
 
-.scroll-pane {
+.scroll-pane,
+.button {
     -fx-background: #ddf5ee;
     -fx-border-color: #5f9ea0;
 }
 
-#date:hover {
+.button:hover {
+    -fx-background-color: #467577;
+    -fx-text-fill: white;
+}
+
+#date:hover,
+#date:selected {
     -fx-background-color: #5bffd0;
 }
 
@@ -34,12 +44,14 @@
 
 #dateHorsMois,
 #today,
-#date {
+#date,
+.button {
     -fx-background-color: RGBA(0, 0, 0, 0);
 }
 
 #labelcalendrier {
     -fx-font-weight: bold;
+    -fx-text-fill: #467577;
 }
 
 #opaque {

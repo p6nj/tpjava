@@ -10,7 +10,8 @@ import modele.Reservation;
 public class TableViewReservation extends TableView<Reservation> {
     public TableViewReservation() {
         super();
-        setMinWidth(650);
+        setMinWidth(672);
+        setEditable(true);
         TableColumn<Reservation, DateCalendrier> dateColumn = new TableColumn<>("Date");
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         dateColumn.setSortable(true);
@@ -18,7 +19,7 @@ public class TableViewReservation extends TableView<Reservation> {
         TableColumn<Reservation, String> coursColumn = new TableColumn<>("Cours");
         coursColumn.setCellValueFactory(new PropertyValueFactory<>("label"));
         coursColumn.setSortable(true);
-        coursColumn.setMinWidth(210);
+        coursColumn.setMinWidth(200);
         TableColumn<Reservation, String> niveauColumn = new TableColumn<>("Niveau");
         niveauColumn.setCellValueFactory(new PropertyValueFactory<>("niveau"));
         niveauColumn.setSortable(true);
@@ -26,11 +27,11 @@ public class TableViewReservation extends TableView<Reservation> {
         TableColumn<Reservation, PlageHoraire> horaireColumn = new TableColumn<>("Horaire");
         horaireColumn.setCellValueFactory(new PropertyValueFactory<>("plage"));
         horaireColumn.setSortable(true);
-        horaireColumn.setMinWidth(120);
+        horaireColumn.setMinWidth(110);
         TableColumn<Reservation, PlageHoraire> dureeColumn = new TableColumn<>("Durée");
         dureeColumn.setCellValueFactory(new PropertyValueFactory<>("duree"));
         dureeColumn.setSortable(true);
-        dureeColumn.setMinWidth(50);
+        dureeColumn.setMinWidth(70);
         getColumns().addAll(dateColumn, coursColumn, niveauColumn, horaireColumn, dureeColumn);
         getSortOrder().addAll(dateColumn, coursColumn, horaireColumn);
         sort();

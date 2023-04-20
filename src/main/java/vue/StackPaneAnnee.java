@@ -1,19 +1,30 @@
 package vue;
 
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
 import modele.DateCalendrier;
 
 public class StackPaneAnnee extends StackPane {
-  private static ToggleGroup group = new ToggleGroup();
+  private static ToggleGroup group;
 
   public StackPaneAnnee(DateCalendrier date) {
     super();
+    group = new ToggleGroup();
     for (int i = 1; i < 13; i++)
       getChildren().add(new TilePaneMois(date, i, group));
     group.selectToggle(group.getToggles().get(0));
     while (((TilePaneMois) getChildren().get(0)).getMois() != date.getMois() + 1)
       next();
+    group.selectToggle(findToggleById("today"));
+  }
+
+  private ToggleButton findToggleById(String id) {
+    for (Toggle toggle : group.getToggles())
+      if (((ToggleButton) toggle).getId().equals(id))
+        return (ToggleButton) toggle;
+    return new ToggleButton();
   }
 
   public void next() {
