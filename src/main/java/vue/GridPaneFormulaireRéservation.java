@@ -6,6 +6,7 @@ import modele.PlageHoraire;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -21,47 +22,53 @@ public class GridPaneFormulaireRéservation extends GridPane {
     private TextArea tCours;
     private ChoiceBox<Horaire> cHoraireDebut, cHoraireFin;
     private Button bAnnuler, bEnregistrer;
+    private static Label semaine = new Label();
 
     public GridPaneFormulaireRéservation() {
         super();
         setWidth(300);
         setGridLinesVisible(debug);
         setHgap(10);
-        setVgap(10);
+        setVgap(15);
+        setPadding(new Insets(50, 0, 0, 0));
+        int i = 0;
+        add(semaine, 1, i++, 3, 1);
+        add(new Separator(), 1, i++, 3, 1);
         Label lcours = new Label("cours");
         Label lniveau = new Label("niveau");
         Label lhoraire = new Label("horaire");
-        add(lcours, 1, 0);
-        add(lniveau, 1, 1);
-        add(lhoraire, 1, 3);
+        add(lcours, 1, i++);
+        add(lniveau, 1, i++);
+        add(lhoraire, 1, ++i);
         tCours = new TextArea();
         tCours.setPromptText("Nom du cours...");
         tCours.setMaxHeight(30);
         tCours.setWrapText(true);
-        add(tCours, 2, 0, 2, 1);
+        add(tCours, 2, 2, 2, 1);
         gNiveau = new ToggleGroup();
         String[] choix = new String[] { "débutant", "moyen", "avancé", "expert" };
-        for (int i = 0; i < choix.length; i++) {
+        for (i = 0; i < choix.length; i++) {
             RadioButton b = new RadioButton("_" + choix[i]);
             b.setAccessibleText(choix[i]);
             b.setMnemonicParsing(true);
             b.setUserData(choix[i]);
             b.setToggleGroup(gNiveau);
-            add(b, i % 2 + 2, i / 2 + 1);
+            add(b, i % 2 + 2, i / 2 + 3);
         }
         gNiveau.selectToggle(gNiveau.getToggles().get(0));
         cHoraireDebut = new ChoiceBox<Horaire>(FXCollections.observableArrayList(getHoraireList()));
         cHoraireFin = new ChoiceBox<Horaire>(FXCollections.observableArrayList(getHoraireList()));
         cHoraireDebut.setValue(cHoraireDebut.getItems().get(0));
         cHoraireFin.setValue(cHoraireFin.getItems().get(1));
-        add(cHoraireDebut, 2, 3);
-        add(cHoraireFin, 3, 3);
+        i = 5;
+        add(cHoraireDebut, 2, i);
+        add(cHoraireFin, 3, i++);
         bAnnuler = new Button("Annuler");
         bEnregistrer = new Button("Enregistrer");
         Separator s = new Separator();
-        add(s, 1, 4, 3, 1);
-        add(bAnnuler, 2, 5);
-        add(bEnregistrer, 3, 5);
+        add(s, 1, i++, 3, 1);
+        add(bAnnuler, 2, i);
+        add(bEnregistrer, 3, i);
     }
 
     private Horaire[] getHoraireList() {
@@ -91,5 +98,13 @@ public class GridPaneFormulaireRéservation extends GridPane {
 
     public void setSaveAction(EventHandler<ActionEvent> e) {
         bEnregistrer.setOnAction(e);
+    }
+
+    public static void setSemaine(int n) {
+        semaine.setText(String.format("Semaine %d", n));
+    }
+
+    public String getNiveau() {
+        return (String) gNiveau.getSelectedToggle().getUserData();
     }
 }

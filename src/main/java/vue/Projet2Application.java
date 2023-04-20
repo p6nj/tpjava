@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Projet2Application extends Application {
 
     public void start(Stage stage) {
-        stage.setWidth(650);
+        stage.setWidth(1350);
         stage.setHeight(400);
         stage.centerOnScreen();
         Scene scene = new Scene(new HBoxRoot());

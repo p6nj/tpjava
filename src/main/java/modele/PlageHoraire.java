@@ -24,7 +24,7 @@ public class PlageHoraire implements Comparable<PlageHoraire> {
      * @return String
      */
     public String toString() {
-        return String.format("%s - %s (%s)", start.toString(), end.toString(), duree().toString());
+        return String.format("%s - %s", start.toString(), end.toString());
     }
 
     /**
@@ -41,7 +41,7 @@ public class PlageHoraire implements Comparable<PlageHoraire> {
     /**
      * @return Duree (length in minutes)
      */
-    private Duree duree() {
+    Duree duree() {
         return new Duree(end.toMinutes() - start.toMinutes());
     }
 

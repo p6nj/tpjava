@@ -1,5 +1,6 @@
 package vue;
 
+import controleur.Controleur;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
@@ -26,17 +27,24 @@ public class TilePaneMois extends TilePane implements ConstantesCalendrier {
         setId("opaque");
         setAlignment(Pos.TOP_CENTER);
         VBox.setVgrow(this, Priority.ALWAYS);
-        getChildren().add(new Label("N°"));
+        Label l = new Label("N°");
+        l.setId("labelcalendrier");
+        getChildren().add(l);
         for (String j : JOURS_SEMAINE_ABR) {
             Label labelDate = new Label(j);
+            labelDate.setId("labelcalendrier");
             getChildren().add(labelDate);
         }
         for (DateCalendrier d : calMois.getDates()) {
             ToggleButton boutonDate = new ToggleButton(Integer.toString(d.getJour()));
             boutonDate.setMinSize(42, 40);
             boutonDate.setToggleGroup(group);
-            if (i++ % 7 == 1)
-                getChildren().add(new Label(String.format("%d", i / 7)));
+            boutonDate.setOnAction(new Controleur());
+            if (i++ % 7 == 1) {
+                l = new Label(String.format("%d", i / 7));
+                l.setId("labelcalendrier");
+                getChildren().add(l);
+            }
             getChildren().add(boutonDate);
             boutonDate.setUserData(d);
             boutonDate.setId(

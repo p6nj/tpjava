@@ -10,7 +10,8 @@ import modele.Reservation;
 public class HBoxRoot extends HBox {
     private static VBoxCalendrier vbc;
     private static GridPaneFormulaireRéservation gpfr;
-    private Controleur c;
+    private static TableViewReservation tableDesReservations = new TableViewReservation();;
+    private static Controleur c;
 
     public HBoxRoot() {
         super(10);
@@ -30,11 +31,12 @@ public class HBoxRoot extends HBox {
     }
 
     public void setGpfr(GridPaneFormulaireRéservation gpfr) {
-        this.gpfr = gpfr;
+        HBoxRoot.gpfr = gpfr;
     }
 
     public static Reservation getReservation() throws Exception {
-        return new Reservation(vbc.getStackPane().getSelection(), gpfr.getPlageHoraire(), gpfr.getName());
+        return new Reservation(vbc.getStackPane().getSelection(), gpfr.getPlageHoraire(), gpfr.getName(),
+                gpfr.getNiveau());
     }
 
     public void setCancelAction(EventHandler<ActionEvent> e) {
@@ -49,7 +51,7 @@ public class HBoxRoot extends HBox {
         getChildren().clear();
         vbc = new VBoxCalendrier();
         gpfr = new GridPaneFormulaireRéservation();
-        getChildren().addAll(vbc, gpfr);
+        getChildren().addAll(vbc, gpfr, tableDesReservations);
         HBoxNavigation planningControls = vbc.getTitle().controls();
         planningControls.setNextAction(new EventHandler<ActionEvent>() {
             @Override
@@ -110,6 +112,14 @@ public class HBoxRoot extends HBox {
         vbc.setDate(date);
         vbc.getStackPane().show(12);
         vbc.getTitle().setDate(date);
+    }
+
+    public static Controleur getControleur() {
+        return c;
+    }
+
+    public static void addTableElement(Reservation r) {
+        tableDesReservations.getItems().add(r);
     }
 
 }

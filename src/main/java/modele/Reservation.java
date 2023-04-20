@@ -4,6 +4,7 @@ public class Reservation implements Comparable<Reservation> {
   private Date date;
   private PlageHoraire plage;
   private String label;
+  private String niveau;
 
   /**
    * Detailed Reservation constructor.
@@ -12,10 +13,11 @@ public class Reservation implements Comparable<Reservation> {
    * @param plage
    * @param label
    */
-  public Reservation(Date date, PlageHoraire plage, String label) throws Exception {
+  public Reservation(Date date, PlageHoraire plage, String label, String niveau) throws Exception {
     this.date = date;
     this.plage = plage;
     this.label = label;
+    this.niveau = niveau;
     if (!estValide())
       throw new Exception();
   }
@@ -61,5 +63,17 @@ public class Reservation implements Comparable<Reservation> {
 
   public String getLabel() {
     return label;
+  }
+
+  public String getNiveau() {
+    return niveau;
+  }
+
+  public PlageHoraire getPlage() {
+    return plage;
+  }
+
+  public Duree getDuree() {
+    return plage.duree();
   }
 }

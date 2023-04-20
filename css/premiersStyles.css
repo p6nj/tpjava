@@ -24,6 +24,24 @@
     -fx-background-color: #5bffd0;
 }
 
+#dateHorsMois:hover {
+    -fx-background-color: #5bffd14b;
+}
+
+#dateHorsMois {
+    -fx-text-fill: #00000075;
+}
+
+#dateHorsMois,
+#today,
+#date {
+    -fx-background-color: RGBA(0, 0, 0, 0);
+}
+
+#labelcalendrier {
+    -fx-font-weight: bold;
+}
+
 #opaque {
     -fx-background-color: #ddf5ee;
     -fx-border-color: #5f9ea0;
