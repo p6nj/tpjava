@@ -1,8 +1,8 @@
 package vue;
 
-import controleur.Controleur;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Priority;
@@ -37,7 +37,9 @@ public class TilePaneMois extends TilePane implements ConstantesCalendrier {
         }
         ToggleButton boutonDate = new ToggleButton();
         for (DateCalendrier d : calMois.getDates()) {
-            boutonDate = new ToggleButton(Integer.toString(d.getJour()));
+            boutonDate = new RadioButton(Integer.toString(d.getJour()));
+            boutonDate.getStyleClass().remove("radio-button");
+            boutonDate.getStyleClass().add("toggle-button");
             boutonDate.setMinSize(42, 40);
             boutonDate.setToggleGroup(group);
             boutonDate.setOnAction(HBoxRoot.getControleur());

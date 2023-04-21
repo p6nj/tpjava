@@ -15,7 +15,8 @@
 }
 
 #today:hover,
-#today:selected {
+#today:selected,
+#niveau:selected {
     -fx-background-color: alt;
     -fx-text-fill: black;
     -fx-font-weight: normal;
@@ -28,19 +29,25 @@
 
 .scroll-pane,
 .button,
-.choice-box {
+.choice-box,
+.table-column {
     -fx-background-color: light2;
 }
 
+.table-column {
+    -fx-text-fill: black;
+}
+
 .button:hover,
-.choice-box:hover {
+.choice-box:hover,
+.table-column:hover {
     -fx-background-color: dark1;
 }
 
 .button:pressed,
 .toggle-button:pressed,
-.radio-button:pressed,
-.choice-box:pressed {
+.choice-box:pressed,
+.table-column:pressed {
     -fx-background-color: dark2;
     -fx-text-fill: white;
 }

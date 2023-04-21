@@ -41,11 +41,7 @@ public class StackPaneAnnee extends StackPane {
     next();
   }
 
-  public DateCalendrier getSelection() {
+  public static DateCalendrier getSelection() {
     return (DateCalendrier) group.getSelectedToggle().getUserData();
-  }
-
-  public static int getSelectedToggleIndex() {
-    return group.getToggles().indexOf(group.getSelectedToggle());
   }
 }

@@ -30,7 +30,7 @@ public class GridPaneFormulaireRéservation extends GridPane {
         setGridLinesVisible(debug);
         setHgap(10);
         setVgap(15);
-        setSemaine(StackPaneAnnee.getSelectedToggleIndex() / 7);
+        setSemaine(StackPaneAnnee.getSelection().getNumeroSemaine());
         setPadding(new Insets(50, 0, 0, 0));
         int i = 0;
         add(semaine, 1, i++, 3, 1);
@@ -54,6 +54,9 @@ public class GridPaneFormulaireRéservation extends GridPane {
             b.setMnemonicParsing(true);
             b.setUserData(choix[i]);
             b.setToggleGroup(gNiveau);
+            b.getStyleClass().remove("radio-button");
+            b.getStyleClass().add("button");
+            b.setId("niveau");
             add(b, i % 2 + 2, i / 2 + 3);
         }
         gNiveau.selectToggle(gNiveau.getToggles().get(0));

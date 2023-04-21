@@ -10,7 +10,8 @@ import modele.Reservation;
 public class TableViewReservation extends TableView<Reservation> {
     public TableViewReservation() {
         super();
-        setMinWidth(672);
+        setId("opaque");
+        setMinWidth(673);
         setEditable(true);
         TableColumn<Reservation, DateCalendrier> dateColumn = new TableColumn<>("Date");
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -20,6 +21,7 @@ public class TableViewReservation extends TableView<Reservation> {
         coursColumn.setCellValueFactory(new PropertyValueFactory<>("label"));
         coursColumn.setSortable(true);
         coursColumn.setMinWidth(200);
+        coursColumn.setEditable(true);
         TableColumn<Reservation, String> niveauColumn = new TableColumn<>("Niveau");
         niveauColumn.setCellValueFactory(new PropertyValueFactory<>("niveau"));
         niveauColumn.setSortable(true);

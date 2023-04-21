@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 public class DateCalendrier extends Date implements ConstantesCalendrier, Comparable<Date> {
   private int chJourSem;
+  private int chNumSem;
 
   public DateCalendrier() {
     super(0);
@@ -11,6 +12,7 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
     chAnnee = today.get(Calendar.YEAR);
     chMois = today.get(Calendar.MONTH) + 1;
     chJour = today.get(Calendar.DAY_OF_MONTH);
+    chNumSem = today.get(Calendar.WEEK_OF_YEAR);
     if ((chJourSem = today.get(Calendar.DAY_OF_WEEK) - 1) == 0)
       chJourSem = 7;
   }
@@ -21,6 +23,7 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
     day.set(parA, parM - 1, parJ);
     if ((chJourSem = day.get(Calendar.DAY_OF_WEEK) - 1) == 0)
       chJourSem = 7;
+    chNumSem = day.get(Calendar.WEEK_OF_YEAR);
   }
 
   @Override
@@ -42,5 +45,9 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
 
   public int getJourSemaine() {
     return chJourSem;
+  }
+
+  public int getNumeroSemaine() {
+    return chNumSem;
   }
 }
