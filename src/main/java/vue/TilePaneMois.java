@@ -15,7 +15,7 @@ import modele.DateCalendrier;
 
 public class TilePaneMois extends TilePane implements ConstantesCalendrier {
     private int mois;
-    private static int i = 0;
+    private int i = 0;
 
     public TilePaneMois(DateCalendrier date, int mois, ToggleGroup group) {
         super();
@@ -44,7 +44,7 @@ public class TilePaneMois extends TilePane implements ConstantesCalendrier {
             boutonDate.setToggleGroup(group);
             boutonDate.setOnAction(HBoxRoot.getControleur());
             if (i++ % 7 == 0) {
-                l = new Label(String.format("%d", i == 1 ? 52 : i / 7));
+                l = new Label(String.format("%d", d.getNumeroSemaine()));
                 l.setId("labelcalendrier");
                 getChildren().add(l);
             }
@@ -57,15 +57,9 @@ public class TilePaneMois extends TilePane implements ConstantesCalendrier {
                         d.getMois() != mois ? "dateHorsMois" : "date");
         }
         setAccessibleText(MOIS[calMois.getMois() - 1]);
-        if (boutonDate != null && boutonDate.getId().equals("dateHorsMois"))
-            i -= 7;
     }
 
     public int getMois() {
         return mois;
-    }
-
-    public static void reset() {
-        i = 0;
     }
 }

@@ -31,6 +31,7 @@ public class GridPaneFormulaireRéservation extends GridPane {
         setHgap(10);
         setVgap(15);
         setSemaine(StackPaneAnnee.getSelection().getNumeroSemaine());
+        semaine.setId("title");
         setPadding(new Insets(50, 0, 0, 0));
         int i = 0;
         add(semaine, 1, i++, 3, 1);

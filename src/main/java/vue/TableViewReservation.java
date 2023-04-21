@@ -11,7 +11,7 @@ public class TableViewReservation extends TableView<Reservation> {
     public TableViewReservation() {
         super();
         setId("opaque");
-        setMinWidth(673);
+        setMinWidth(680);
         setEditable(true);
         TableColumn<Reservation, DateCalendrier> dateColumn = new TableColumn<>("Date");
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));

@@ -43,24 +43,6 @@ public class StackPaneAnnee extends StackPane {
   }
 
   public static DateCalendrier getSelection() {
-<<<<<<< HEAD
     return (DateCalendrier) group.getSelectedToggle().getUserData();
   }
-=======
-    Toggle selection = group.getSelectedToggle();
-    if (selection != null)
-      current = (DateCalendrier) selection.getUserData();
-    else
-      System.out.println("valid");
-    return current;
-  }
-
-  public static int getSelectedToggleIndex() {
-    return group.getToggles().indexOf(group.getSelectedToggle());
-  }
-
-  public static int getSelectedToggleIndexByValue(Toggle value) {
-    return group.getToggles().indexOf(value);
-  }
->>>>>>> f528c091c4b113b89ca7cdfb966949d5aca4bf14
 }

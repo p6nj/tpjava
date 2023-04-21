@@ -30,6 +30,7 @@
 .scroll-pane,
 .button,
 .choice-box,
+.choice-box .context-menu,
 .table-column {
     -fx-background-color: light2;
 }
@@ -40,7 +41,8 @@
 
 .button:hover,
 .choice-box:hover,
-.table-column:hover {
+.table-column:hover,
+.choice-box .menu-item:focused {
     -fx-background-color: dark1;
 }
 
