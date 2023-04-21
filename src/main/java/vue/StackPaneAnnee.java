@@ -8,6 +8,7 @@ import modele.DateCalendrier;
 
 public class StackPaneAnnee extends StackPane {
   private static ToggleGroup group;
+  private static DateCalendrier current;
 
   public StackPaneAnnee(DateCalendrier date) {
     super();
@@ -41,11 +42,20 @@ public class StackPaneAnnee extends StackPane {
     next();
   }
 
-  public DateCalendrier getSelection() {
-    return (DateCalendrier) group.getSelectedToggle().getUserData();
+  public static DateCalendrier getSelection() {
+    Toggle selection = group.getSelectedToggle();
+    if (selection != null)
+      current = (DateCalendrier) selection.getUserData();
+    else
+      System.out.println("valid");
+    return current;
   }
 
   public static int getSelectedToggleIndex() {
     return group.getToggles().indexOf(group.getSelectedToggle());
+  }
+
+  public static int getSelectedToggleIndexByValue(Toggle value) {
+    return group.getToggles().indexOf(value);
   }
 }
