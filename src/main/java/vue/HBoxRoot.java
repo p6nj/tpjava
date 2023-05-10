@@ -11,7 +11,7 @@ import modele.Reservation;
 public class HBoxRoot extends HBox {
     private static VBoxCalendrier vbc;
     private static GridPaneFormulaireRéservation gpfr;
-    private static TableViewReservation tableDesReservations;
+    private static StackPaneTableViewReservation tableDesReservations;
     private static Controleur c;
 
     public HBoxRoot() {
@@ -55,7 +55,8 @@ public class HBoxRoot extends HBox {
         vbc = new VBoxCalendrier();
         gpfr = new GridPaneFormulaireRéservation();
         if (tableDesReservations == null)
-            tableDesReservations = new TableViewReservation();
+            tableDesReservations = new StackPaneTableViewReservation();
+        tableDesReservations.addIfAbsentAndShow(StackPaneAnnee.getSelection().getNumeroSemaine());
         getChildren().addAll(vbc, gpfr, tableDesReservations);
         HBoxNavigation planningControls = vbc.getTitle().controls();
         planningControls.setNextAction(new EventHandler<ActionEvent>() {
@@ -122,8 +123,12 @@ public class HBoxRoot extends HBox {
         return c;
     }
 
-    public static void addTableElement(Reservation r) {
-        tableDesReservations.getItems().add(r);
+    public static void addTableElement(int semaine, Reservation r) {
+        tableDesReservations.addReservation(semaine, r);
+    }
+
+    public static void addIfAbsentAndShow(int n) {
+        tableDesReservations.addIfAbsentAndShow(n);
     }
 
 }
