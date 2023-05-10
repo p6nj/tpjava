@@ -7,9 +7,12 @@ import modele.DateCalendrier;
 import modele.PlageHoraire;
 import modele.Reservation;
 
-public class TableViewReservation extends TableView<Reservation> {
-    public TableViewReservation() {
+public class TableViewReservation extends TableView<Reservation> implements Comparable<TableViewReservation> {
+    private int semaine;
+
+    public TableViewReservation(int semaine) {
         super();
+        this.semaine = semaine;
         setId("opaque");
         setMinWidth(680);
         setEditable(true);
@@ -37,5 +40,14 @@ public class TableViewReservation extends TableView<Reservation> {
         getColumns().addAll(dateColumn, coursColumn, niveauColumn, horaireColumn, dureeColumn);
         getSortOrder().addAll(dateColumn, coursColumn, horaireColumn);
         sort();
+    }
+
+    public int getSemaine() {
+        return semaine;
+    }
+
+    @Override
+    public int compareTo(TableViewReservation other) {
+        return Integer.compare(semaine, other.getSemaine());
     }
 }
