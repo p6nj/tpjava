@@ -6,6 +6,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import modele.DateCalendrier;
+import modele.ExceptionPlanning;
+import modele.Planning;
 import modele.Reservation;
 
 public class HBoxRoot extends HBox {
@@ -13,6 +15,7 @@ public class HBoxRoot extends HBox {
     private static GridPaneFormulaireRéservation gpfr;
     private static StackPaneTableViewReservation tableDesReservations;
     private static Controleur c;
+    private static Planning planning = new Planning();
 
     public HBoxRoot() {
         super(10);
@@ -25,7 +28,7 @@ public class HBoxRoot extends HBox {
     }
 
     public void setVbc(VBoxCalendrier vbc) {
-        this.vbc = vbc;
+        HBoxRoot.vbc = vbc;
     }
 
     public GridPaneFormulaireRéservation getGpfr() {
@@ -37,7 +40,8 @@ public class HBoxRoot extends HBox {
     }
 
     public static Reservation getReservation() throws Exception {
-        return new Reservation(vbc.getStackPane().getSelection(), gpfr.getPlageHoraire(), gpfr.getName(),
+        vbc.getStackPane();
+        return new Reservation(StackPaneAnnee.getSelection(), gpfr.getPlageHoraire(), gpfr.getName(),
                 gpfr.getNiveau());
     }
 
@@ -123,8 +127,9 @@ public class HBoxRoot extends HBox {
         return c;
     }
 
-    public static void addTableElement(int semaine, Reservation r) {
+    public static void addTableElement(int semaine, Reservation r) throws ExceptionPlanning {
         tableDesReservations.addReservation(semaine, r);
+        planning.ajout(r);
     }
 
     public static void addIfAbsentAndShow(int n) {

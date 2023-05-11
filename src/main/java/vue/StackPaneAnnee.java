@@ -8,7 +8,6 @@ import modele.DateCalendrier;
 
 public class StackPaneAnnee extends StackPane {
   private static ToggleGroup group;
-  private static DateCalendrier current;
 
   public StackPaneAnnee(DateCalendrier date) {
     super();

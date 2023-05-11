@@ -1,6 +1,8 @@
 package modele;
 
-public class Reservation implements Comparable<Reservation> {
+import java.io.Serializable;
+
+public class Reservation implements Comparable<Reservation>, Serializable {
   private Date date;
   private PlageHoraire plage;
   private String label;
