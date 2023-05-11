@@ -17,7 +17,6 @@ public class LectureEcriture {
     public static Object lecture(File file) {
         ObjectInputStream flux;
         Object readObject = null;
-        System.err.println("coucou");
         try {
             flux = new ObjectInputStream(new FileInputStream(file));
             readObject = flux.readObject();
@@ -41,7 +40,6 @@ public class LectureEcriture {
      */
     public static void ecriture(File file, Object object) {
         ObjectOutputStream flux = null;
-        System.err.println("quoicou");
         try {
             flux = new ObjectOutputStream(new FileOutputStream(file));
             flux.writeObject(object);

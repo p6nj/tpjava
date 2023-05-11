@@ -1,8 +1,9 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class DateCalendrier extends Date implements ConstantesCalendrier, Comparable<Date> {
+public class DateCalendrier extends Date implements ConstantesCalendrier, Comparable<Date>, Serializable {
   private int chJourSem;
   private int chNumSem;
 

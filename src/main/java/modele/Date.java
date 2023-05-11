@@ -1,8 +1,9 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Date {
+public class Date implements Serializable {
   protected int chJour, chMois, chAnnee;
 
   /**

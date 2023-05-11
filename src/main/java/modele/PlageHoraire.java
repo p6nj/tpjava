@@ -1,8 +1,9 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class PlageHoraire implements Comparable<PlageHoraire> {
+public class PlageHoraire implements Comparable<PlageHoraire>, Serializable {
     private final static int Minimum = 15;
     private Horaire start, end;
 

@@ -1,6 +1,8 @@
 package modele;
 
-public class Horaire implements Comparable<Horaire> {
+import java.io.Serializable;
+
+public class Horaire implements Comparable<Horaire>, Serializable {
     private int heure, quartHeure;
 
     /**

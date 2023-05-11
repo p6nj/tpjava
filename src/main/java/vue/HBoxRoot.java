@@ -1,10 +1,5 @@
 package vue;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Paths;
-
 import controleur.Controleur;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
