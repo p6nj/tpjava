@@ -41,6 +41,7 @@ public class LectureEcriture {
      */
     public static void ecriture(File file, Object object) {
         ObjectOutputStream flux = null;
+        System.err.println("quoicou");
         try {
             flux = new ObjectOutputStream(new FileOutputStream(file));
             flux.writeObject(object);

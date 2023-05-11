@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
 
 import outils.LectureEcriture;
 
@@ -54,13 +55,8 @@ public class Planning implements ConstantesErreur, Serializable {
   }
 
   private void save() {
-    try {
-      File file = new File(Planning.class.getResource("/sauvegarde/Planning.bin").toURI());
-      LectureEcriture.ecriture(file, this);
-    } catch (URISyntaxException e) {
-      System.out.println("Erreur dans la syntaxe du chemin du fichier de sauvegarde.");
-      System.exit(1);
-    }
+    File file = Paths.get(Planning.class.getResource("/sauvegarde/Planning.bin").getPath()).toFile();
+    LectureEcriture.ecriture(file, this);
   }
 
   /**
