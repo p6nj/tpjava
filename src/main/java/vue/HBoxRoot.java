@@ -1,5 +1,9 @@
 package vue;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+
 import controleur.Controleur;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,34 +13,33 @@ import modele.DateCalendrier;
 import modele.ExceptionPlanning;
 import modele.Planning;
 import modele.Reservation;
+import outils.LectureEcriture;
 
 public class HBoxRoot extends HBox {
     private static VBoxCalendrier vbc;
     private static GridPaneFormulaireRéservation gpfr;
     private static StackPaneTableViewReservation tableDesReservations;
     private static Controleur c;
-    private static Planning planning = new Planning();
+    private static Planning planning;
 
     public HBoxRoot() {
         super(10);
         setAlignment(Pos.TOP_LEFT);
+        fileRestore();
         setDefaults();
     }
 
-    public VBoxCalendrier getVbc() {
-        return vbc;
-    }
-
-    public void setVbc(VBoxCalendrier vbc) {
-        HBoxRoot.vbc = vbc;
-    }
-
-    public GridPaneFormulaireRéservation getGpfr() {
-        return gpfr;
-    }
-
-    public void setGpfr(GridPaneFormulaireRéservation gpfr) {
-        HBoxRoot.gpfr = gpfr;
+    public void fileRestore() {
+        File file = Paths.get(Planning.class.getResource("/sauvegarde/Planning.bin").getPath()).toFile();
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            System.err.println("Création du fichier de sauvegarde impossible.");
+            System.exit(1);
+        }
+        planning = (Planning) LectureEcriture.lecture(file);
+        if (planning == null)
+            planning = new Planning();
     }
 
     public static Reservation getReservation() throws Exception {

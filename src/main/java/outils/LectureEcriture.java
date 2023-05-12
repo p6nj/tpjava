@@ -1,5 +1,6 @@
 package outils;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,7 +22,13 @@ public class LectureEcriture {
             flux = new ObjectInputStream(new FileInputStream(file));
             readObject = flux.readObject();
             flux.close();
-        } catch (ClassNotFoundException parException) {
+        } catch (EOFException e) {
+            System.err.println("Fichier de sauvegarde vide.");
+            return readObject;
+
+        } catch (
+
+        ClassNotFoundException parException) {
             System.err.println(parException.toString());
             System.exit(1);
         } catch (IOException exception) {
