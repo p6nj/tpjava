@@ -40,6 +40,19 @@ public class HBoxRoot extends HBox {
         planning = (Planning) LectureEcriture.lecture(file);
         if (planning == null)
             planning = new Planning();
+        else
+            populateReservations();
+    }
+
+    public void populateReservations() {
+        System.err.println(planning);
+        for (Reservation r : planning.getAllReservations())
+            try {
+                addTableElement(new DateCalendrier(r.getDate().getJour(), r.getDate().getMois(), r.getDate().getAnnee())
+                        .getNumeroSemaine(), r);
+            } catch (ExceptionPlanning e) {
+                System.err.println("Réservations sauvegardées invalides : " + e.toString());
+            }
     }
 
     public static Reservation getReservation() throws Exception {

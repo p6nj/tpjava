@@ -1,19 +1,18 @@
 package modele;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
-import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.util.Vector;
 
 import outils.LectureEcriture;
 
 public class Planning implements ConstantesErreur, Serializable {
-  private Reservation reservations[];
+  private Vector<Reservation> reservations;
   private static final int SIZE = 100;
 
   public Planning() {
-    reservations = new Reservation[SIZE];
+    reservations = new Vector<>();
   }
 
   /**
@@ -23,10 +22,10 @@ public class Planning implements ConstantesErreur, Serializable {
    */
   public String toString() {
     String resultat;
-    if (reservations[0] != null) {
+    if (!reservations.isEmpty()) {
       resultat = "---\n";
-      for (int i = 0; i < reservations.length && reservations[i] != null; i++)
-        resultat += "\t" + reservations[i].toString() + "\n";
+      for (Reservation r : reservations)
+        resultat += "\t" + r.toString() + "\n";
       resultat += "---";
     } else
       resultat = "[]";
@@ -42,16 +41,12 @@ public class Planning implements ConstantesErreur, Serializable {
     if (!reservation.estValide()) {
       throw new ExceptionPlanning(ERRINV);
     }
-    for (int i = 0; i < reservations.length; i++) {
-      if (reservations[i] == null) {
-        reservations[i] = reservation;
-        save();
-        return;
-      }
-      if (reservations[i].compareTo(reservation) == 0)
+    for (Reservation r : reservations) {
+      if (r.compareTo(reservation) == 0)
         throw new ExceptionPlanning(ERRINC);
     }
-    throw new ExceptionPlanning(ERRFUL);
+    reservations.add(reservation);
+    save();
   }
 
   private void save() {
@@ -101,6 +96,10 @@ public class Planning implements ConstantesErreur, Serializable {
     return reservations;
   }
 
+  public Vector<Reservation> getAllReservations() {
+    return reservations;
+  }
+
   /**
    * @param debut
    * @param fin
@@ -109,8 +108,8 @@ public class Planning implements ConstantesErreur, Serializable {
    */
   public int plusAncienneReservation(int debut, int fin) {
     int resultat = debut;
-    for (int i = debut + 1; !(i > fin) && reservations[i] != null; i++) {
-      if (reservations[i].compareTo(reservations[resultat]) < 0)
+    for (int i = debut + 1; !(i > fin); i++) {
+      if (reservations.get(i).compareTo(reservations.get(resultat)) < 0)
         resultat = i;
     }
     return resultat;
@@ -122,11 +121,11 @@ public class Planning implements ConstantesErreur, Serializable {
   public void triSelection() {
     int b;
     Reservation temp;
-    for (int i = 0; i < reservations.length && reservations[i] != null; i++) {
-      b = plusAncienneReservation(i, reservations.length - 1);
-      temp = reservations[i]; // change self first
-      reservations[i] = reservations[b];
-      reservations[b] = temp;
+    for (int i = 0; i < reservations.size(); i++) {
+      b = plusAncienneReservation(i, reservations.size() - 1);
+      temp = reservations.get(i); // change self first
+      reservations.set(i, reservations.get(b));
+      reservations.set(b, temp);
     }
   }
 
@@ -136,12 +135,12 @@ public class Planning implements ConstantesErreur, Serializable {
   public void triInsertion() {
     Reservation x;
     int j;
-    for (int i = 0; i < reservations.length && reservations[i] != null; i++) {
-      x = reservations[i];
-      for (j = i; j > 0 && reservations[j - 1].compareTo(x) >= 0; j--) {
-        reservations[j] = reservations[j - 1];
+    for (int i = 0; i < reservations.size(); i++) {
+      x = reservations.get(i);
+      for (j = i; j > 0 && reservations.get(j - 1).compareTo(x) >= 0; j--) {
+        reservations.set(j, reservations.get(j - 1));
       }
-      reservations[j] = x;
+      reservations.set(j, x);
     }
   }
 
