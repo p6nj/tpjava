@@ -25,16 +25,12 @@ public class LectureEcriture {
         } catch (EOFException e) {
             System.err.println("Fichier de sauvegarde vide.");
             return readObject;
-
-        } catch (
-
-        ClassNotFoundException parException) {
+        } catch (ClassNotFoundException parException) {
             System.err.println(parException.toString());
             System.exit(1);
         } catch (IOException exception) {
             System.err.println("Erreur lecture du fichier " + exception.toString());
             System.exit(1);
-
         }
         return readObject;
     }
