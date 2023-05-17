@@ -22,13 +22,25 @@ public class HBoxRoot extends HBox {
     private static Controleur c;
     private static Planning planning;
 
+    /**
+     * Setups window elements and restore reservations from the planning file.
+     * 
+     * @see #fileRestore()
+     * @see #setDefaults()
+     */
     public HBoxRoot() {
         super(10);
         setAlignment(Pos.TOP_LEFT);
-        fileRestore();
         setDefaults();
+        fileRestore();
     }
 
+    /**
+     * Restores reservations from the planning file /sauvegarde/Planning.bin
+     * (resources) and add them to the local planning and to the window table.
+     * 
+     * @see #populateReservations()
+     */
     public void fileRestore() {
         File file = Paths.get(Planning.class.getResource("/sauvegarde/Planning.bin").getPath()).toFile();
         try {
@@ -44,31 +56,68 @@ public class HBoxRoot extends HBox {
             populateReservations();
     }
 
+    /**
+     * Add the restored reservations to the window table.
+     * 
+     * @see #addTableElement(int, Reservation)
+     */
     public void populateReservations() {
         System.err.println(planning);
-        for (Reservation r : planning.getAllReservations())
+        for (Reservation r : planning.getAllReservations()) {
             try {
                 addTableElement(new DateCalendrier(r.getDate().getJour(), r.getDate().getMois(), r.getDate().getAnnee())
                         .getNumeroSemaine(), r);
             } catch (ExceptionPlanning e) {
-                System.err.println("Réservations sauvegardées invalides : " + e.toString());
+                System.err.println("Erreur dans les réservations sauvegardées (" + r + ") : " + e.toString());
+            } catch (NullPointerException e) {
+                System.out.println("Reservation " + r + " non ajoutée");
             }
+        }
     }
 
+    /**
+     * Forms a reservation from the selected date of the tilepane and the schedule,
+     * label and level of the gridpane form.
+     * 
+     * @return the resulting
+     *         {@link modele.Reservation#Reservation(modele.Date, modele.PlageHoraire, String, String)
+     *         Reservation}
+     * @throws Exception
+     */
     public static Reservation getReservation() throws Exception {
-        vbc.getStackPane();
         return new Reservation(StackPaneAnnee.getSelection(), gpfr.getPlageHoraire(), gpfr.getName(),
                 gpfr.getNiveau());
     }
 
+    /**
+     * Sets the "cancel" action on the window.
+     * 
+     * @see GridPaneFormulaireRéservation#setCancelAction(EventHandler)
+     */
     public void setCancelAction(EventHandler<ActionEvent> e) {
         gpfr.setCancelAction(e);
     }
 
+    /**
+     * Sets the "save" action on the window.
+     * 
+     * @see GridPaneFormulaireRéservation#setSaveAction(EventHandler)
+     */
     public void setSaveAction(EventHandler<ActionEvent> e) {
         gpfr.setSaveAction(e);
     }
 
+    /**
+     * Setups the window elements as at first launch.
+     * 
+     * @see VBoxCalendrier#VBoxCalendrier()
+     * @see GridPaneFormulaireRéservation#GridPaneFormulaireRéservation()
+     * @see controleur.Controleur#Controleur()
+     * @see HBoxNavigation#setNextAction(EventHandler)
+     * @see HBoxNavigation#setPrevAction(EventHandler)
+     * @see HBoxNavigation#setFirstAction(EventHandler)
+     * @see HBoxNavigation#setLastAction(EventHandler)
+     */
     public void setDefaults() {
         getChildren().clear();
         c = new Controleur();
@@ -107,19 +156,35 @@ public class HBoxRoot extends HBox {
         setCancelAction(e -> setDefaults());
     }
 
+    /**
+     * Alter the window elements for the "next" action triggered by a button.
+     * 
+     * @see modele.DateCalendrier#DateCalendrier(int, int, int)
+     * @see VBoxCalendrier#setDate(DateCalendrier)
+     * @see VBoxCalendrier#next()
+     * @see HBoxTitle#setDate(DateCalendrier)
+     */
     public void next() {
         DateCalendrier date = vbc.getDate();
         date = new DateCalendrier(date.getJour(), date.getMois() == 12 ? 1 : date.getMois() + 1, date.getAnnee());
         vbc.setDate(date);
-        vbc.getStackPane().next();
+        vbc.next();
         vbc.getTitle().setDate(date);
     }
 
+    /**
+     * Alter the window elements for the "prev" action triggered by a button.
+     * 
+     * @see modele.DateCalendrier#DateCalendrier(int, int, int)
+     * @see VBoxCalendrier#setDate(DateCalendrier)
+     * @see VBoxCalendrier#prev()
+     * @see HBoxTitle#setDate(DateCalendrier)
+     */
     public void prev() {
         DateCalendrier date = vbc.getDate();
         date = new DateCalendrier(date.getJour(), date.getMois() == 1 ? 12 : date.getMois() - 1, date.getAnnee());
         vbc.setDate(date);
-        vbc.getStackPane().prev();
+        vbc.prev();
         vbc.getTitle().setDate(date);
     }
 
@@ -127,7 +192,7 @@ public class HBoxRoot extends HBox {
         DateCalendrier date = vbc.getDate();
         date = new DateCalendrier(date.getJour(), 1, date.getAnnee());
         vbc.setDate(date);
-        vbc.getStackPane().show(1);
+        vbc.show(1);
         vbc.getTitle().setDate(date);
     }
 
@@ -135,7 +200,7 @@ public class HBoxRoot extends HBox {
         DateCalendrier date = vbc.getDate();
         date = new DateCalendrier(date.getJour(), 12, date.getAnnee());
         vbc.setDate(date);
-        vbc.getStackPane().show(12);
+        vbc.show(12);
         vbc.getTitle().setDate(date);
     }
 
@@ -144,6 +209,7 @@ public class HBoxRoot extends HBox {
     }
 
     public static void addTableElement(int semaine, Reservation r) throws ExceptionPlanning {
+        tableDesReservations.addIfAbsent(semaine);
         tableDesReservations.addReservation(semaine, r);
         planning.ajout(r);
     }

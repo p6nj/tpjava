@@ -24,11 +24,19 @@ public class VBoxCalendrier extends VBox {
         date = newdate;
     }
 
-    public StackPaneAnnee getStackPane() {
-        return stackPaneMois;
-    }
-
     public HBoxTitle getTitle() {
         return title;
+    }
+
+    public void next() {
+        stackPaneMois.next();
+    }
+
+    public void prev() {
+        stackPaneMois.prev();
+    }
+
+    public void show(int mois) {
+        stackPaneMois.show(mois);
     }
 }

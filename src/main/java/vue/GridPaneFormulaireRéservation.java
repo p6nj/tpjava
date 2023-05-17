@@ -61,10 +61,10 @@ public class GridPaneFormulaireRéservation extends GridPane {
             add(b, i % 2 + 2, i / 2 + 3);
         }
         gNiveau.selectToggle(gNiveau.getToggles().get(0));
-        cHoraireDebut = new ChoiceBox<Horaire>(FXCollections.observableArrayList(getHoraireList()));
-        cHoraireFin = new ChoiceBox<Horaire>(FXCollections.observableArrayList(getHoraireList()));
-        cHoraireDebut.setValue(cHoraireDebut.getItems().get(0));
-        cHoraireFin.setValue(cHoraireFin.getItems().get(1));
+        cHoraireDebut = new ChoiceBox<Horaire>(FXCollections.observableArrayList(getHoraireList(0)));
+        cHoraireFin = new ChoiceBox<Horaire>(FXCollections.observableArrayList(getHoraireList(1)));
+        cHoraireDebut.setValue(cHoraireDebut.getItems().get(7));
+        cHoraireFin.setValue(cHoraireFin.getItems().get(11));
         i = 5;
         add(cHoraireDebut, 2, i);
         add(cHoraireFin, 3, i++);
@@ -76,9 +76,9 @@ public class GridPaneFormulaireRéservation extends GridPane {
         add(bEnregistrer, 3, i);
     }
 
-    private Horaire[] getHoraireList() {
+    private Horaire[] getHoraireList(int offset) {
         Horaire[] horaires = new Horaire[24 * 4];
-        for (int i = 0; i < horaires.length; i++) {
+        for (int i = offset; i < horaires.length; i++) {
             horaires[i] = new Horaire(i / 4, (i % 4) * 15);
         }
         return horaires;

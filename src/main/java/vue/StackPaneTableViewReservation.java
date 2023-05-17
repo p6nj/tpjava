@@ -13,11 +13,15 @@ public class StackPaneTableViewReservation extends StackPane {
         semaines = new HashMap<>();
     }
 
-    public void addIfAbsentAndShow(int n) {
+    public void addIfAbsent(int n) {
         if (!semaines.containsKey(n)) {
             semaines.put(n, new TableViewReservation());
             getChildren().add(semaines.get(n));
         }
+    }
+
+    public void addIfAbsentAndShow(int n) {
+        addIfAbsent(n);
         semaines.get(n).toFront();
     }
 
