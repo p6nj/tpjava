@@ -7,6 +7,9 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
   private int chJourSem;
   private int chNumSem;
 
+  /**
+   * Sets the date as the current date.
+   */
   public DateCalendrier() {
     super(0);
     Calendar today = Calendar.getInstance();
@@ -18,6 +21,12 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
       chJourSem = 7;
   }
 
+  /**
+   * Main constructor.
+   * @param parJ: day of the month 
+   * @param parM: month
+   * @param parA: year
+   */
   public DateCalendrier(int parJ, int parM, int parA) {
     super(parJ, parM, parA);
     Calendar day = Calendar.getInstance();
@@ -32,22 +41,36 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
     return String.format("%s %d %s %d", JOURS_SEMAINE[chJourSem - 1], chJour, MOIS[chMois - 1], chAnnee);
   }
 
+  /**
+   * @return tomorrow's date
+   */
   @Override
   public DateCalendrier dateDuLendemain() {
     Date sup = new Date(chJour, chMois, chAnnee).dateDuLendemain();
     return new DateCalendrier(sup.chJour, sup.chMois, sup.chAnnee);
   }
 
+  /**
+   * @return yesterday's date
+   */
   @Override
   public DateCalendrier dateDeLaVeille() {
     Date sup = super.dateDeLaVeille();
     return new DateCalendrier(sup.chJour, sup.chMois, sup.chAnnee);
   }
 
+  /**
+   * Classic getter.
+   * @return day of the week (from 1)
+   */
   public int getJourSemaine() {
     return chJourSem;
   }
 
+  /**
+   * Classic getter.
+   * @return week number
+   */
   public int getNumeroSemaine() {
     return chNumSem;
   }
