@@ -6,6 +6,11 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
 import modele.DateCalendrier;
 
+/**
+ * Stacks months as {@link TilePaneMois#TilePaneMois(DateCalendrier, int, ToggleGroup) custom tile panes}.
+ * @author bferrari
+ * @see TilePaneMois
+ */
 public class StackPaneAnnee extends StackPane {
   private static ToggleGroup group;
 
@@ -27,20 +32,35 @@ public class StackPaneAnnee extends StackPane {
     return new ToggleButton();
   }
 
+  /**
+   * Makes the next month tile pane visible.
+   */
   public void next() {
     getChildren().get(0).toFront();
   }
 
+  /**
+   * Makes the previous month tile pane visible.
+   */
   public void prev() {
     getChildren().get(getChildren().size() - 1).toBack();
   }
 
+  /**
+   * Makes the nth month tile pane visible.
+   * @param mois (month number)
+   */
   public void show(int mois) {
     while (((TilePaneMois) getChildren().get(0)).getMois() != mois)
       next();
     next();
   }
 
+  /**
+   * Selection getter.
+   * @return selected DateCalendrier
+   * @see DateCalendrier
+   */
   public static DateCalendrier getSelection() {
     return (DateCalendrier) group.getSelectedToggle().getUserData();
   }

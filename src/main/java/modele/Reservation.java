@@ -57,24 +57,41 @@ public class Reservation implements Comparable<Reservation>, Serializable {
   }
 
   /**
+   * Classic getter.
    * @return the date field
    */
   public Date getDate() {
     return date;
   }
 
+  /**
+   * Classic getter.
+   * @return the label field
+   */
   public String getLabel() {
     return label;
   }
 
+  /**
+   * Classic getter.
+   * @return the level field
+   */
   public String getNiveau() {
     return niveau;
   }
 
+  /**
+   * Classic getter.
+   * @return the plage field (time slots)
+   */
   public PlageHoraire getPlage() {
     return plage;
   }
 
+  /**
+   * Classic getter.
+   * @return the duree field (duration)
+   */
   public Duree getDuree() {
     return plage.duree();
   }

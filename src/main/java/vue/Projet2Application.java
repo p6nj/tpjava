@@ -6,8 +6,16 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Application launcher.
+ * @author bferrari
+ *
+ */
 public class Projet2Application extends Application {
 
+	/**
+	 * Starts the application.
+	 */
     public void start(Stage stage) {
         stage.setWidth(1350);
         stage.setHeight(400);

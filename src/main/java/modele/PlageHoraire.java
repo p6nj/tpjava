@@ -7,6 +7,12 @@ public class PlageHoraire implements Comparable<PlageHoraire>, Serializable {
     private final static int Minimum = 15;
     private Horaire start, end;
 
+    /**
+     * Main constructor.
+     * @param start time
+     * @param end time
+     * @throws Exception
+     */
     public PlageHoraire(Horaire start, Horaire end) throws Exception {
         this.start = start;
         this.end = end;

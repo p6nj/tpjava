@@ -16,6 +16,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 
+/**
+ * Reservation form seen at the center of the window.
+ * @author bferrari
+ *
+ */
 public class GridPaneFormulaireRéservation extends GridPane {
     private static final boolean debug = false;
     private ToggleGroup gNiveau;
@@ -75,7 +80,12 @@ public class GridPaneFormulaireRéservation extends GridPane {
         add(bAnnuler, 2, i);
         add(bEnregistrer, 3, i);
     }
-
+    
+    /**
+     * Constructs a table of times to choose in the time slot choice boxes. 
+     * @param offset to start the time list with
+     * @return table of times
+     */
     private Horaire[] getHoraireList(int offset) {
         Horaire[] horaires = new Horaire[24 * 4];
         for (int i = offset; i < horaires.length; i++) {
@@ -84,6 +94,11 @@ public class GridPaneFormulaireRéservation extends GridPane {
         return horaires;
     }
 
+    /**
+     * Constructs a PlageHoraire object from both of the choice boxes.
+     * @return time slot
+     * @see modele.PlageHoraire
+     */
     public PlageHoraire getPlageHoraire() {
         try {
             return new PlageHoraire(cHoraireDebut.getValue(), cHoraireFin.getValue());
@@ -93,22 +108,42 @@ public class GridPaneFormulaireRéservation extends GridPane {
         }
     }
 
+    /**
+     * Classic getter.
+     * @return label (name) of the Reservation
+     */
     public String getName() {
         return tCours.getText();
     }
 
+    /**
+     * Set the "Cancel" action when clicking on the corresponding button (bottom of the form).
+     * @param e (event handler)
+     */
     public void setCancelAction(EventHandler<ActionEvent> e) {
         bAnnuler.setOnAction(e);
     }
 
+    /**
+     * Set the "Save" action when clicking on the corresponding button (bottom of the form).
+     * @param e (event handler)
+     */
     public void setSaveAction(EventHandler<ActionEvent> e) {
         bEnregistrer.setOnAction(e);
     }
 
+    /**
+     * Classic setter. Modifies the week number in the form title.
+     * @param n (week number)
+     */
     public static void setSemaine(int n) {
         semaine.setText(String.format("Semaine %d", n));
     }
 
+    /**
+     * Classic getter.
+     * @return level
+     */
     public String getNiveau() {
         return (String) gNiveau.getSelectedToggle().getUserData();
     }

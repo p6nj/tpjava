@@ -15,6 +15,11 @@ import modele.Planning;
 import modele.Reservation;
 import outils.LectureEcriture;
 
+/**
+ * Window root.
+ * @author bferrari
+ *
+ */
 public class HBoxRoot extends HBox {
     private static VBoxCalendrier vbc;
     private static GridPaneFormulaireRéservation gpfr;

@@ -7,6 +7,11 @@ import modele.DateCalendrier;
 import modele.PlageHoraire;
 import modele.Reservation;
 
+/**
+ * Reservation table.
+ * @author bferrari
+ *
+ */
 public class TableViewReservation extends TableView<Reservation> {
     public TableViewReservation() {
         super();
@@ -39,6 +44,10 @@ public class TableViewReservation extends TableView<Reservation> {
         sort();
     }
 
+    /**
+     * Add a reservation to the table.
+     * @param r: reservation
+     */
     public void add(Reservation r) {
         getItems().add(r);
     }

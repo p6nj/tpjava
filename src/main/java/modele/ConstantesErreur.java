@@ -1,5 +1,10 @@
 package modele;
 
+/**
+ * String and integer representations for reservation errors.
+ * @author bferrari
+ *
+ */
 public interface ConstantesErreur {
   public final String[] ERREURS_PLANNING = {
       "Réservation invalide",

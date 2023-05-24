@@ -1,5 +1,10 @@
 package modele;
 
+/**
+ * Capitalizes strings for month names.
+ * @author bferrari
+ *
+ */
 public class Capitalize {
     public static String toTitleCase(String str) {
         StringBuilder sb = new StringBuilder(str.length());

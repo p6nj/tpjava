@@ -3,6 +3,13 @@ package vue;
 import javafx.scene.layout.VBox;
 import modele.DateCalendrier;
 
+/**
+ * Stack pane container that tracks the date.
+ * @author bferrari
+ * @see DateCalendrier
+ * @see StackPaneAnnee
+ * @see HBoxTitle
+ */
 public class VBoxCalendrier extends VBox {
     private DateCalendrier date;
     private StackPaneAnnee stackPaneMois;
@@ -28,14 +35,27 @@ public class VBoxCalendrier extends VBox {
         return title;
     }
 
+    /**
+     * Shows the next month on the stack pane.
+     * @see StackPaneAnnee
+     */
     public void next() {
         stackPaneMois.next();
     }
 
+    /**
+     * Shows the previous month on the stack pane.
+     * @see StackPaneAnnee
+     */
     public void prev() {
         stackPaneMois.prev();
     }
 
+    /**
+     * Shows the nth month on the stack pane.
+     * @param mois: month number
+     * @see StackPaneAnnee
+     */
     public void show(int mois) {
         stackPaneMois.show(mois);
     }
