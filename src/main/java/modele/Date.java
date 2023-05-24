@@ -181,14 +181,26 @@ public class Date implements Serializable {
     return new Date(champs[0], champs[1], champs[2]);
   }
 
+  /**
+   * Classic getter.
+   * @return month
+   */
   public int getMois() {
     return chMois;
   }
 
+  /**
+   * Classic getter.
+   * @return year
+   */
   public int getAnnee() {
     return chAnnee;
   }
 
+  /**
+   * Classic getter.
+   * @return day
+   */
   public int getJour() {
     return chJour;
   }
